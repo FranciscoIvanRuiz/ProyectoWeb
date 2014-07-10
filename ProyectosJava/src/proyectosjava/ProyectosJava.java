@@ -7,7 +7,7 @@
 package proyectosjava;
 
 /**
- *
+ * Clase principal donde arranca el proyecto
  * @author fruiz
  */
 public class ProyectosJava {
