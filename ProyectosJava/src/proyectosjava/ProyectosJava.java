@@ -6,6 +6,8 @@
 
 package proyectosjava;
 
+import Vistas.Ingreso;
+
 /**
  * Clase principal donde arranca el proyecto
  * @author fruiz
@@ -17,7 +19,7 @@ public class ProyectosJava {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+         new Ingreso().setVisible(true);
     }
     
 }
