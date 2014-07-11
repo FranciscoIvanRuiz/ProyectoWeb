@@ -10,6 +10,7 @@ import java.sql.*;
 /**
  *
  * @author Francisco Ivan Ruiz Simbana (francisco.ivan.ruiz@gmail.com)
+ *
  */
 public class Conexion {
     
