@@ -49,6 +49,11 @@ public class Ingreso extends javax.swing.JFrame {
         jLabel2.setText("Contraseña:");
 
         jButton1.setText("Ingresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,6 +91,14 @@ public class Ingreso extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String Usuario = jTextField1.getText();
+        String Clave = jPasswordField1.getText();
+        
+        JOptionPane.showMessageDialog(this, "Usuario " + Usuario + "Clave " +Clave);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
