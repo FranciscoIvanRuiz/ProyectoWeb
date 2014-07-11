@@ -41,6 +41,22 @@ public class Sql {
       return ok;
    }
 
+   public int LlavePrimaria(String from_where){
+      int Id = 0; 
+      try{
+         PreparedStatement pstm = con.getConnection().prepareStatement("SELECT id as llaveprimaria  " + from_where);
+         ResultSet res = pstm.executeQuery();
+         res.next();
+         Id = res.getInt("llaveprimaria");
+         res.close();
+         
+      }catch(SQLException e){
+        System.out.println(e);
+      }
+      if (Id >0){return Id;}else{return 0;}
+   }
+  
+ 
   public boolean existe(String campo, String from_where){
      int registros = 0;
      try{

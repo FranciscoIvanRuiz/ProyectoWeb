@@ -13,21 +13,28 @@ import BaseDatos.Sql;
  */
 public class UsuarioControl {
     private Sql mySql = new Sql();
-    private String Id_Usuario="";
+    public Integer Id=0;
+    private String Usuario="";
+    private String Clave="";
     
      public UsuarioControl(){    
     }
 
-      public boolean Existe_Usuario(String Id){
-        this.Id_Usuario=Id;
-        return mySql.existe("ID", " from usuarios where id='"+Id+"';");
+     
+     
+      public boolean Existe_Usuario(Integer Id , String Usuario , String Clave){
+        this.Id=Id;
+        this.Usuario=Usuario;
+        this.Clave=Clave;
+        this.Id = mySql.LlavePrimaria(" from usuarios where usuario='"+Usuario+"' and clave='"+Clave+"';");
+        return mySql.existe("ID", " from usuarios where usuario='"+Usuario+"' and clave='"+Clave+"';");
     }
 
      public String getNombreUsuario(){        
-        return mySql.GetDataString("nombre", "select nombre from usuarios where id='"+this.Id_Usuario+"';");
+        return mySql.GetDataString("nombre", "select nombre from usuarios where id='"+this.Id+"';");
     }
      
        public String getClaveUsuario(){        
-        return mySql.GetDataString("clave", "select clave from usuarios where id='"+this.Id_Usuario+"';");
+        return mySql.GetDataString("clave", "select clave from usuarios where id='"+this.Id+"';");
     }
 }

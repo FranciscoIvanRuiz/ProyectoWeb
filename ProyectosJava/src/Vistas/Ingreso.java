@@ -96,8 +96,15 @@ public class Ingreso extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Usuario = jTextField1.getText();
         String Clave = jPasswordField1.getText();
+        Integer Id = 0;
+        if (ctrl.Existe_Usuario(Id, Usuario, Clave)){
+            JOptionPane.showMessageDialog(this, "Usuario " + Usuario + "Clave " +Clave + "Id" + ctrl.Id);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Usuario " + Usuario + "Clave " +Clave +" No existe...");
+        }
         
-        JOptionPane.showMessageDialog(this, "Usuario " + Usuario + "Clave " +Clave);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
