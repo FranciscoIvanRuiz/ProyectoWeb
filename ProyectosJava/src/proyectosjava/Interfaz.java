@@ -29,24 +29,60 @@ public class Interfaz extends javax.swing.JFrame {
         
          //se crea la raiz
          DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Sistema - Francisco Ruiz");
-         DefaultMutableTreeNode departamento;
-         DefaultMutableTreeNode provincia;
-         DefaultMutableTreeNode municipio;
+         DefaultMutableTreeNode empresa;
+         DefaultMutableTreeNode modulo;
+         DefaultMutableTreeNode submodulo;
+         DefaultMutableTreeNode opcion;
          
-          String[] columnas={"id","nombre","ruc","correo"};
-          Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas;"); 
-          if( data.length > 0)
+          String[] columnas_empr={"id","nombre","ruc","correo"};
+          Object[][] data_empr = mySql.GetTabla(columnas_empr, "empresas", "select * from empresas;"); 
+          if( data_empr.length > 0)
               {
-                  for (int i = 0; i < data.length; i++) {
-                        departamento = new DefaultMutableTreeNode(data[i][1]);
-                        raiz.add(departamento);
+                  for (int i = 0; i < data_empr.length; i++) {
+                        empresa = new DefaultMutableTreeNode(data_empr[i][1]);
+                        raiz.add(empresa);
                         
-                        
-                        provincia = new DefaultMutableTreeNode("Provincia 1");
-              departamento.add(provincia);
+                        String[] columnas_modu={"id","nombre"};
+                        Object[][] data_modu = mySql.GetTabla(columnas_modu, "modulos", "select * from modulos;"); 
+                        if( data_modu.length > 0)
+                           {    
+                               for (int j = 0; j < data_modu.length; j++) {
+                                    modulo = new DefaultMutableTreeNode(data_modu[j][1]);
+                                    empresa.add(modulo);
+                                    
+                                    String[] columnas_subm={"id","nombre"};
+                                    Object[][] data_subm = mySql.GetTabla(columnas_subm, "submodulos", "select * from submodulos where modulos_id="+data_modu[j][0]+";"); 
               
-                municipio = new DefaultMutableTreeNode("Municipio 1");
-                provincia.add(municipio);
+                                     if( data_subm.length > 0)
+                                        {
+                                            for (int k = 0; k < data_subm.length; k++) {
+                                                submodulo = new DefaultMutableTreeNode(data_subm[k][1]);
+                                                modulo.add(submodulo);
+                                                
+                                                String[] columnas_opci={"id","nombre"};
+                                                Object[][] data_opci = mySql.GetTabla(columnas_subm, "opciones", "select * from opciones where submodulo_modulos_id="+data_modu[j][0]+" and  submodulo_id="+data_subm[k][0]+";"); 
+              
+                                                 if( data_opci.length > 0)
+                                                    {
+                                                        for (int l = 0; l < data_opci.length; l++) {
+                                                            opcion = new DefaultMutableTreeNode(data_opci[l][1]);
+                                                            submodulo.add(opcion);
+                                                        }
+                                                    }
+                                                
+                                                
+                                            }
+                                        }
+                                    
+                                    
+                                   
+                
+                               }
+      
+                            }                  
+                        
+                        
+                      
             
                   }
               }
