@@ -7,8 +7,15 @@
 package proyectosjava;
 
 import BaseDatos.Sql;
+import Vistas.Empresa;
+import Controladores.EmpresaControl;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
 /**
  *
@@ -17,6 +24,8 @@ import javax.swing.tree.DefaultTreeModel;
 public class Interfaz extends javax.swing.JFrame {
     
     private Sql mySql = new Sql();
+    private EmpresaControl EmprCont=  new EmpresaControl();
+    private Empresa Empr;
     
    
 
@@ -73,10 +82,7 @@ public class Interfaz extends javax.swing.JFrame {
                                                 
                                             }
                                         }
-                                    
-                                    
-                                   
-                
+                         
                                }
       
                             }                  
@@ -87,21 +93,55 @@ public class Interfaz extends javax.swing.JFrame {
                   }
               }
           
-        
-          //se crea hojas departamentos
-            
-            
-              
+      
             
             DefaultTreeModel modelo = new DefaultTreeModel(raiz);
             this.jTree1.setModel(modelo);
 
-            
+//       jTree1.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+//
+//           public void valueChanged(TreeSelectionEvent e) {
+//               // Se obtiene el Path seleccionado
+//               TreePath path = e.getPath();
+//               Object[] nodos = path.getPath();
+//               String txt="";
+////             String txt = jTextArea1.getText() + "Path seleccionado: ";
+//               for (Object nodo : nodos) {
+//                   txt += nodo.toString() + " | ";
+//               }
+//               
+//               
+//               
+//               
+////               txt += "\n";
+////               // Se obtiene el Nodo seleccionado
+////               DefaultMutableTreeNode NodoSeleccionado = (DefaultMutableTreeNode) nodos[nodos.length - 1];
+////               txt += "-> Accion para Nodo Seleccionado [" + NodoSeleccionado.getUserObject().toString() + "]";
+////               txt += "\n";
+////               jTextArea1.setText(txt);
+//           }
+//    });      
 
      
         
         
     }
+    
+
+     private boolean EstaCerrado(Object obj){
+        JInternalFrame[] activos=panel.getAllFrames();
+        boolean cerrado=true;
+        int i=0;
+        while (i<activos.length && cerrado){
+            if(activos[i]==obj){
+		cerrado=false;
+            }
+            i++;
+        }
+    return cerrado;
+    }
+     
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -114,10 +154,21 @@ public class Interfaz extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
+        panel = new javax.swing.JDesktopPane();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setViewportView(jTree1);
+
+        panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Sistema"));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,19 +176,43 @@ public class Interfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(351, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        if(EstaCerrado(Empr)){
+            Empr = new Empresa(EmprCont);
+            panel.add(Empr);
+            Empr.show();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,7 +250,9 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
+    private javax.swing.JDesktopPane panel;
     // End of variables declaration//GEN-END:variables
 }
