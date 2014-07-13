@@ -6,6 +6,9 @@
 
 package proyectosjava;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 /**
  *
  * @author ivanruiz
@@ -17,6 +20,33 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+        
+        
+         //se crea la raiz
+         DefaultMutableTreeNode pais = new DefaultMutableTreeNode("Bolivia");
+         DefaultMutableTreeNode departamento;
+         DefaultMutableTreeNode provincia;
+         DefaultMutableTreeNode municipio;
+         
+         
+          //se crea hojas departamentos
+            departamento = new DefaultMutableTreeNode("Departamento 1");
+            pais.add(departamento);
+            
+              provincia = new DefaultMutableTreeNode("Provincia 1");
+              departamento.add(provincia);
+              
+                municipio = new DefaultMutableTreeNode("Municipio 1");
+                provincia.add(municipio);
+            
+            DefaultTreeModel modelo = new DefaultTreeModel(pais);
+            this.jTree1.setModel(modelo);
+
+            jTree1.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+
+     
+        
+        
     }
 
     /**
@@ -28,17 +58,28 @@ public class Interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jScrollPane1.setViewportView(jTree1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(305, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -80,5 +121,7 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTree jTree1;
     // End of variables declaration//GEN-END:variables
 }

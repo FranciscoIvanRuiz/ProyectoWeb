@@ -9,6 +9,7 @@ package Vistas;
 import Controladores.UsuarioControl;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import proyectosjava.Interfaz;
 
 /**
  *
@@ -100,6 +101,8 @@ public class Ingreso extends javax.swing.JFrame {
         Integer Id = 0;
         if (ctrl.Existe_Usuario(Id, Usuario, Clave)){
             JOptionPane.showMessageDialog(this, "Usuario " + Usuario + "Clave " +Clave + "Id" + ctrl.Id);
+            this.setVisible(false);
+             new Interfaz().setVisible(true);
         }
         else
         {
