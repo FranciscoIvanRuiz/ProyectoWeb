@@ -6,6 +6,7 @@
 
 package proyectosjava;
 
+import BaseDatos.Sql;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -14,6 +15,10 @@ import javax.swing.tree.DefaultTreeModel;
  * @author ivanruiz
  */
 public class Interfaz extends javax.swing.JFrame {
+    
+    private Sql mySql = new Sql();
+    
+   
 
     /**
      * Creates new form Interfaz
@@ -23,26 +28,39 @@ public class Interfaz extends javax.swing.JFrame {
         
         
          //se crea la raiz
-         DefaultMutableTreeNode pais = new DefaultMutableTreeNode("Bolivia");
+         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Sistema - Francisco Ruiz");
          DefaultMutableTreeNode departamento;
          DefaultMutableTreeNode provincia;
          DefaultMutableTreeNode municipio;
          
-         
-          //se crea hojas departamentos
-            departamento = new DefaultMutableTreeNode("Departamento 1");
-            pais.add(departamento);
-            
-              provincia = new DefaultMutableTreeNode("Provincia 1");
+          String[] columnas={"id","nombre","ruc","correo"};
+          Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas;"); 
+          if( data.length > 0)
+              {
+                  for (int i = 0; i < data.length; i++) {
+                        departamento = new DefaultMutableTreeNode(data[i][1]);
+                        raiz.add(departamento);
+                        
+                        
+                        provincia = new DefaultMutableTreeNode("Provincia 1");
               departamento.add(provincia);
               
                 municipio = new DefaultMutableTreeNode("Municipio 1");
                 provincia.add(municipio);
             
-            DefaultTreeModel modelo = new DefaultTreeModel(pais);
+                  }
+              }
+          
+        
+          //se crea hojas departamentos
+            
+            
+              
+            
+            DefaultTreeModel modelo = new DefaultTreeModel(raiz);
             this.jTree1.setModel(modelo);
 
-            jTree1.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+            
 
      
         
@@ -71,14 +89,14 @@ public class Interfaz extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(351, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
