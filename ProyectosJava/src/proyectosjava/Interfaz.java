@@ -95,8 +95,7 @@ public class Interfaz extends javax.swing.JFrame {
                   }
               }
           
-      
-            
+  
             DefaultTreeModel modelo = new DefaultTreeModel(raiz);
             this.jTree1.setModel(modelo);
             
