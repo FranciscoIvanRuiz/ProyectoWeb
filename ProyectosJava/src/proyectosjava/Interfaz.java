@@ -7,13 +7,15 @@
 package proyectosjava;
 
 import BaseDatos.Sql;
-import Vistas.Empresa;
 import Controladores.EmpresaControl;
+import Vistas.Empresa;
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
@@ -97,30 +99,27 @@ public class Interfaz extends javax.swing.JFrame {
             
             DefaultTreeModel modelo = new DefaultTreeModel(raiz);
             this.jTree1.setModel(modelo);
+            
+            DefaultTreeCellRenderer iconos = ( DefaultTreeCellRenderer)jTree1.getCellRenderer();
+            iconos.setLeafIcon(new ImageIcon("src\\IconosSistema\\people.png"));
+            iconos.setOpenIcon(new ImageIcon("src\\IconosSistema\\people.png"));
+            iconos.setClosedIcon(new ImageIcon("src\\IconosSistema\\people.png"));
 
-//       jTree1.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
-//
-//           public void valueChanged(TreeSelectionEvent e) {
-//               // Se obtiene el Path seleccionado
-//               TreePath path = e.getPath();
-//               Object[] nodos = path.getPath();
-//               String txt="";
-////             String txt = jTextArea1.getText() + "Path seleccionado: ";
-//               for (Object nodo : nodos) {
-//                   txt += nodo.toString() + " | ";
-//               }
-//               
-//               
-//               
-//               
-////               txt += "\n";
-////               // Se obtiene el Nodo seleccionado
-////               DefaultMutableTreeNode NodoSeleccionado = (DefaultMutableTreeNode) nodos[nodos.length - 1];
-////               txt += "-> Accion para Nodo Seleccionado [" + NodoSeleccionado.getUserObject().toString() + "]";
-////               txt += "\n";
-////               jTextArea1.setText(txt);
-//           }
-//    });      
+       jTree1.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
+
+           public void valueChanged(TreeSelectionEvent e) {
+               // Se obtiene el Path seleccionado
+               TreePath path = e.getPath();
+               Object[] nodos = path.getPath();
+               String txt="";
+               for (Object nodo : nodos) {
+                   txt += nodo.toString() + " | ";
+               }
+               
+               System.out.println(txt);
+             
+           }
+    });      
 
      
         

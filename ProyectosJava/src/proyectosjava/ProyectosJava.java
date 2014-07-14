@@ -19,7 +19,9 @@ public class ProyectosJava {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-         new Ingreso().setVisible(true);
+       //  new Ingreso().setVisible(true);
+        
+         new Interfaz().setVisible(true);
     }
     
 }
