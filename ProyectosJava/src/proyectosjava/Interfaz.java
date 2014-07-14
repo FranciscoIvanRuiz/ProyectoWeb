@@ -101,9 +101,9 @@ public class Interfaz extends javax.swing.JFrame {
             this.jTree1.setModel(modelo);
             
             DefaultTreeCellRenderer iconos = ( DefaultTreeCellRenderer)jTree1.getCellRenderer();
-            iconos.setLeafIcon(new ImageIcon("src\\IconosSistema\\people.png"));
-            iconos.setOpenIcon(new ImageIcon("src\\IconosSistema\\people.png"));
-            iconos.setClosedIcon(new ImageIcon("src\\IconosSistema\\people.png"));
+            iconos.setLeafIcon(new ImageIcon("src\\IconosSistema\\nuevo.png"));
+            iconos.setOpenIcon(new ImageIcon("src\\IconosSistema\\detalle.png"));
+            iconos.setClosedIcon(new ImageIcon("src\\IconosSistema\\Navegadores.png"));
 
        jTree1.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
 
