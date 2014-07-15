@@ -40,10 +40,14 @@ public class Interfaz extends javax.swing.JFrame {
      */
     public Interfaz() {
         initComponents();
+        this.setTitle("Sistema Financiero Contable");
+        //formulario al centro de la pantalla
+        this.setLocationRelativeTo(null);
+        panel.setBorder(new ImagenFondo());
         
         
          //se crea la raiz
-         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Sistema - Francisco Ruiz");
+         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Sistema Financiero Contable");
          DefaultMutableTreeNode empresa;
          DefaultMutableTreeNode modulo;
          DefaultMutableTreeNode submodulo;
@@ -104,11 +108,7 @@ public class Interfaz extends javax.swing.JFrame {
             this.jTree1.setModel(modelo);
             
             DefaultTreeCellRenderer iconos = ( DefaultTreeCellRenderer)jTree1.getCellRenderer();
-            
-            File f_nuevo = new File("nuevo.png"); // Creamos un objeto file
-	    File f_detalle = new File("detalle.png"); // Creamos un objeto file
-	    File f_navegadores = new File("detalle.png"); // Creamos un objeto file
-	    
+        
           
             ClassLoader cldr = this.getClass().getClassLoader();
 
@@ -143,6 +143,8 @@ public class Interfaz extends javax.swing.JFrame {
                for (Object nodo : nodos) {
                    txt += nodo.toString() + " | ";
                }
+               
+              
                
                System.out.println(txt);
              
@@ -182,12 +184,28 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         panel = new javax.swing.JDesktopPane();
+        jToolBar1 = new javax.swing.JToolBar();
+        jToolBar2 = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jScrollPane1.setViewportView(jTree1);
 
-        panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Sistema"));
+        panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jToolBar1.setRollover(true);
+
+        jToolBar2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToolBar2.setFloatable(false);
+        jToolBar2.setRollover(true);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Edit page.png"))); // NOI18N
+        jButton1.setText("Nuevo");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(jButton1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -197,11 +215,19 @@ public class Interfaz extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                    .addComponent(panel)))
         );
 
         pack();
@@ -243,7 +269,10 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JTree jTree1;
     private javax.swing.JDesktopPane panel;
     // End of variables declaration//GEN-END:variables
