@@ -1,0 +1,10 @@
+ if(EstaCerrado(Empr)){
+            Empr = new Empresa(EmprCont);
+            panel.add(Empr);
+            Empr.show();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+
+

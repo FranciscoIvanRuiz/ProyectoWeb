@@ -9,6 +9,9 @@ package proyectosjava;
 import BaseDatos.Sql;
 import Controladores.EmpresaControl;
 import Vistas.Empresa;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -18,6 +21,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
+
 
 /**
  *
@@ -100,9 +104,34 @@ public class Interfaz extends javax.swing.JFrame {
             this.jTree1.setModel(modelo);
             
             DefaultTreeCellRenderer iconos = ( DefaultTreeCellRenderer)jTree1.getCellRenderer();
-            iconos.setLeafIcon(new ImageIcon("src\\IconosSistema\\nuevo.png"));
-            iconos.setOpenIcon(new ImageIcon("src\\IconosSistema\\detalle.png"));
-            iconos.setClosedIcon(new ImageIcon("src\\IconosSistema\\Navegadores.png"));
+            
+            File f_nuevo = new File("nuevo.png"); // Creamos un objeto file
+	    File f_detalle = new File("detalle.png"); // Creamos un objeto file
+	    File f_navegadores = new File("detalle.png"); // Creamos un objeto file
+	    
+          
+            ClassLoader cldr = this.getClass().getClassLoader();
+
+            java.net.URL imageURL1   = cldr.getResource("IconosSistema/nuevo.png");
+            java.net.URL imageURL2   = cldr.getResource("IconosSistema/detalle.png");
+            java.net.URL imageURL3   = cldr.getResource("IconosSistema/Navegadores.png");
+            
+            ImageIcon a = new ImageIcon(imageURL1);
+            ImageIcon b = new ImageIcon(imageURL2);
+            ImageIcon c = new ImageIcon(imageURL3);
+           
+           // ImageIcon Nuevo = new ImageIcon(imgUrl);
+            
+//            Image imagenInterna = new ImageIcon(getClass().getResource("nuevo.png")).getImage();
+            
+             System.out.println(imageURL1);
+            
+            iconos.setLeafIcon(a);
+            iconos.setOpenIcon(b);
+            iconos.setClosedIcon(c);
+            
+            
+            
 
        jTree1.getSelectionModel().addTreeSelectionListener(new TreeSelectionListener() {
 
@@ -153,7 +182,6 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         panel = new javax.swing.JDesktopPane();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,56 +189,23 @@ public class Interfaz extends javax.swing.JFrame {
 
         panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Sistema"));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+            .addComponent(panel)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        if(EstaCerrado(Empr)){
-            Empr = new Empresa(EmprCont);
-            panel.add(Empr);
-            Empr.show();
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,7 +243,6 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTree jTree1;
     private javax.swing.JDesktopPane panel;
