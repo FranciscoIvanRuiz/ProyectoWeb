@@ -10,6 +10,8 @@ import BaseDatos.Sql;
 import Controladores.EmpresaControl;
 import Vistas.Empresa;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -144,16 +146,39 @@ public class Interfaz extends javax.swing.JFrame {
                    txt += nodo.toString() + " | ";
                }
                
-              
-               
                System.out.println(txt);
              
            }
     });      
 
+       
+        jTree1.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent me) {
+                
+               if (me.getClickCount()== 2)  {
+                
+                TreePath tp = jTree1.getPathForLocation(me.getX(), me.getY());
+                if (tp != null) {
+                    System.out.println(tp.toString());
+                    
+                    if(EstaCerrado(Empr)){
+            Empr = new Empresa();
+            panel.add(Empr);
+            Empr.show();
+        }
+        else{
+           // JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+                    
+                    
+                } else {
+                    System.out.println("");
+                }
+            }
+            }
+        });
      
-        
-        
+  
     }
     
 
@@ -185,8 +210,6 @@ public class Interfaz extends javax.swing.JFrame {
         jTree1 = new javax.swing.JTree();
         panel = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
-        jToolBar2 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -195,17 +218,6 @@ public class Interfaz extends javax.swing.JFrame {
         panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jToolBar1.setRollover(true);
-
-        jToolBar2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jToolBar2.setFloatable(false);
-        jToolBar2.setRollover(true);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Edit page.png"))); // NOI18N
-        jButton1.setText("Nuevo");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar2.add(jButton1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,17 +228,14 @@ public class Interfaz extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE))
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
                     .addComponent(panel)))
         );
 
@@ -269,10 +278,8 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JTree jTree1;
     private javax.swing.JDesktopPane panel;
     // End of variables declaration//GEN-END:variables

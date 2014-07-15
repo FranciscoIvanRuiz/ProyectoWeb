@@ -4,20 +4,18 @@
  * and open the template in the editor.
  */
 
-package Vistas;
-
-import proyectosjava.*;
+package proyectosjava;
 
 /**
  *
  * @author fruiz
  */
-public class Empresa extends javax.swing.JInternalFrame {
+public class MantenimientoPrincipal extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form MantenimientoPrincipal
      */
-    public Empresa() {
+    public MantenimientoPrincipal() {
         initComponents();
     }
 
