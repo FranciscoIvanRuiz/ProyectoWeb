@@ -6,6 +6,8 @@
 
 package Vistas;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ivanruiz
@@ -19,6 +21,34 @@ public class Empresa extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public void EventoNuevo() {
+      JOptionPane.showMessageDialog(this,"Hijo Evento1");
+    }
+
+    public void EventoGrabar() {
+
+    }
+
+    public void EventoEliminar() {
+
+    }
+
+    public void EventoImprimir() {
+
+    }
+
+    public void EventoSiguiente() {
+
+    }
+
+    public void EventoAnterior() {
+
+    }
+
+    public void EventoBuscar() {
+
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

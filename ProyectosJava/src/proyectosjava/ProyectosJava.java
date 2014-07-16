@@ -6,6 +6,7 @@
 
 package proyectosjava;
 
+import Vistas.Empresa;
 import Vistas.Ingreso;
 import javax.swing.UIManager;
 
@@ -14,6 +15,12 @@ import javax.swing.UIManager;
  * @author fruiz
  */
 public class ProyectosJava {
+    
+    /* Debemos definir en esta parte todas las pantallas que vamos a utilizar */
+    private Empresa Empr;
+    /* Fin Debemos definir en esta parte todas las pantallas que vamos a utilizar */
+     
+    
 
     /**
      * @param args the command line arguments
