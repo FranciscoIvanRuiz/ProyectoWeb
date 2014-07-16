@@ -37,6 +37,8 @@ public class MantenimientoPrincipal extends javax.swing.JInternalFrame {
         siguiente = new javax.swing.JButton();
         jButtonbuscar = new javax.swing.JButton();
 
+        setClosable(true);
+
         jToolBar1.setRollover(true);
 
         jButtonnuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/New file.png"))); // NOI18N
@@ -113,7 +115,7 @@ public class MantenimientoPrincipal extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 211, Short.MAX_VALUE))
+                .addGap(0, 214, Short.MAX_VALUE))
         );
 
         pack();

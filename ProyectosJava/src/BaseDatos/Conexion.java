@@ -16,7 +16,7 @@ public class Conexion {
     
    private final String Base = "SistemaWeb";
    private final String Usuario = "root";
-   private final String Contrasena = "1980";
+   private final String Contrasena = "0984495050ing";
    private final String url = "jdbc:mysql://localhost/"+Base;
 
    Connection conn = null;

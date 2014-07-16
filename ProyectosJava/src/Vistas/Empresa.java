@@ -6,16 +6,14 @@
 
 package Vistas;
 
-import proyectosjava.*;
-
 /**
  *
- * @author fruiz
+ * @author ivanruiz
  */
 public class Empresa extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form MantenimientoPrincipal
+     * Creates new form Empresa
      */
     public Empresa() {
         initComponents();
@@ -30,6 +28,8 @@ public class Empresa extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jButtonnuevo = new javax.swing.JButton();
         jButtongrabar = new javax.swing.JButton();
@@ -38,6 +38,10 @@ public class Empresa extends javax.swing.JInternalFrame {
         jButtonanterior = new javax.swing.JButton();
         siguiente = new javax.swing.JButton();
         jButtonbuscar = new javax.swing.JButton();
+
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
 
         jToolBar1.setRollover(true);
 
@@ -109,13 +113,25 @@ public class Empresa extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 211, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,13 +141,13 @@ public class Empresa extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonanteriorActionPerformed
 
-    private void jButtonbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonbuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonbuscarActionPerformed
-
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_siguienteActionPerformed
+
+    private void jButtonbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonbuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonbuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -141,6 +157,8 @@ public class Empresa extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtongrabar;
     private javax.swing.JButton jButtonimprimir;
     private javax.swing.JButton jButtonnuevo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JButton siguiente;
     // End of variables declaration//GEN-END:variables

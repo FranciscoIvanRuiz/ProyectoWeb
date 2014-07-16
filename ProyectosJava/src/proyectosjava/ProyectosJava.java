@@ -36,7 +36,7 @@ public class ProyectosJava {
            // java.util.logging.Logger.getLogger(CelsiusConverter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-         new Interfaz().setVisible(true);
+         new InterfazMenu().setVisible(true);
     }
     
 }
