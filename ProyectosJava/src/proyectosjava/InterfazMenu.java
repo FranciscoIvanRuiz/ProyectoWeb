@@ -260,7 +260,9 @@ public class InterfazMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         JInternalFrame selectedFrame = panel.getSelectedFrame();
         
+        /*para cada ventana poner el evento*/
         if(selectedFrame instanceof Empresa){Empr.EventoNuevo();}
+        /*fin para cada ventana poner el evento*/
         
     }//GEN-LAST:event_jButtonnuevoActionPerformed
 
