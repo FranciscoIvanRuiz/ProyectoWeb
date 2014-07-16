@@ -7,4 +7,10 @@
             JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
 
+/******************poner en el key KeyTyped para validar solo numeros*********************************/
 
+  char caracter = evt.getKeyChar();
+if(((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE))
+{
+evt.consume();
+}
