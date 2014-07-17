@@ -16,7 +16,9 @@ import javax.swing.JOptionPane;
  */
 public class Empresa extends javax.swing.JInternalFrame {
 
-    private EmpresaControl EmpCont;
+    private EmpresaControl EmpCont = new EmpresaControl();
+    
+      
       public Integer Id = 0;
       public String Nombre = "";
      public  String Ruc = "" ;
@@ -49,6 +51,9 @@ public class Empresa extends javax.swing.JInternalFrame {
     }
     
     public void EventoNuevo() {
+        
+       
+        
       JOptionPane.showMessageDialog(this,"Hijo Evento1");
     }
 
@@ -121,6 +126,11 @@ public class Empresa extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Responsable:");
 
+        jtextruc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtextrucFocusLost(evt);
+            }
+        });
         jtextruc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtextrucKeyTyped(evt);
@@ -203,25 +213,39 @@ public class Empresa extends javax.swing.JInternalFrame {
 
     private void jtextrucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtextrucKeyTyped
         // TODO add your handling code here:
-       ObtenerDatos();
+       //ObtenerDatos();
        
         char caracter = evt.getKeyChar();
         if (((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
         }else
         {
-            if ( EmpCont.Existe_Empresa(Id, Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id) )
-               {
-                   DatosEmpresa = EmpCont.getDatoEmpresa(EmpCont.Id);
-                    jtextnombre.setText(DatosEmpresa[0][1].toString());
-               }
-            //JOptionPane.showMessageDialog(this,Nombre);
+ 
         }
     }//GEN-LAST:event_jtextrucKeyTyped
 
     private void jtextnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextnombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextnombreActionPerformed
+
+    private void jtextrucFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtextrucFocusLost
+        // TODO add your handling code here:
+        ObtenerDatos();
+
+        if (EmpCont.Existe_Empresa(Id, Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id)) {
+            DatosEmpresa = EmpCont.getDatoEmpresa(EmpCont.Id);
+            jtextnombre.setText(DatosEmpresa[0][0].toString());
+            jtextruc.setText(DatosEmpresa[0][1].toString());
+            jtexttelefono.setText(DatosEmpresa[0][2].toString());
+            jtextfax.setText(DatosEmpresa[0][3].toString());
+            jtextcorreo.setText(DatosEmpresa[0][4].toString());
+            jtextdireccion.setText(DatosEmpresa[0][5].toString());
+            jtextweb.setText(DatosEmpresa[0][6].toString());
+            jtextpersonas_id.setText(DatosEmpresa[0][7].toString());
+
+        }
+
+    }//GEN-LAST:event_jtextrucFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

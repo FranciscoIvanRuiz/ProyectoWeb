@@ -7,6 +7,7 @@
 package Controladores;
 
 import BaseDatos.Sql;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,6 +43,8 @@ public class EmpresaControl {
         this.Web = Web;
         this.Personas_id = Personas_id;
 
+        System.out.println(Ruc);
+        
         this.Id = mySql.LlavePrimaria(" from empresas where ruc='" + Ruc + "' ;");
         return mySql.existe("ID", " from empresas where ruc='" + Ruc + "' ;");
     }
