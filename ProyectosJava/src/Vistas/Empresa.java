@@ -51,10 +51,14 @@ public class Empresa extends javax.swing.JInternalFrame {
     }
     
     public void EventoNuevo() {
-        
-       
-        
-      JOptionPane.showMessageDialog(this,"Hijo Evento1");
+        jtextnombre.setText("");
+        jtextruc.setText("");
+        jtexttelefono.setText("");
+        jtextfax.setText("");
+        jtextcorreo.setText("");
+        jtextdireccion.setText("");
+        jtextweb.setText("");
+        jtextpersonas_id.setText("");
     }
 
     public void EventoGrabar() {
