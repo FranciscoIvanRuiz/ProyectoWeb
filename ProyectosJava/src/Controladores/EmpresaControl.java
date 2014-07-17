@@ -46,7 +46,7 @@ public class EmpresaControl {
         return mySql.existe("ID", " from empresas where ruc='" + Ruc + "' ;");
     }
     
-     public Object[][] getDatoEmpresa(String Id){
+     public Object[][] getDatoEmpresa(Integer Id){
         String[] columnas={"nombre" ,"ruc","telefono","fax","correo","direccion","web","personas_id"};
         Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas where id='"+Id+"';");
         return data;

@@ -6,6 +6,7 @@
 
 package Vistas;
 
+import Controladores.EmpresaControl;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
@@ -15,6 +16,18 @@ import javax.swing.JOptionPane;
  */
 public class Empresa extends javax.swing.JInternalFrame {
 
+    private EmpresaControl EmpCont;
+      public Integer Id = 0;
+      public String Nombre = "";
+     public  String Ruc = "" ;
+      public String Telefono = "";
+      public String Fax = "";
+     public  String Correo ="";
+     public  String Direccion = "" ;
+     public  String Web = "";
+     public  String Personas_id = "";
+     private Object[][] DatosEmpresa;
+    
     /**
      * Creates new form Empresa
      */
@@ -23,15 +36,15 @@ public class Empresa extends javax.swing.JInternalFrame {
     }
 
     public void ObtenerDatos(){
-      Integer Id = 0;
-      String Nombre = jtextnombre.getText();
-      String Ruc = jtextruc.getText() ;
-      String Telefono = jtexttelefono.getText();
-      String Fax = jtextfax.getText();
-      String Correo =jtextcorreo.getText();
-      String Direccion = jtextdireccion.getText() ;
-      String Web = jtextweb.getText();
-      String Personas_id = jtextpersonas_id.getText();
+       Id = 0;
+       Nombre = jtextnombre.getText();
+       Ruc = jtextruc.getText() ;
+       Telefono = jtexttelefono.getText();
+       Fax = jtextfax.getText();
+       Correo =jtextcorreo.getText();
+       Direccion = jtextdireccion.getText() ;
+       Web = jtextweb.getText();
+       Personas_id = jtextpersonas_id.getText();
       
     }
     
@@ -190,13 +203,19 @@ public class Empresa extends javax.swing.JInternalFrame {
 
     private void jtextrucKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtextrucKeyTyped
         // TODO add your handling code here:
-
+       ObtenerDatos();
+       
         char caracter = evt.getKeyChar();
         if (((caracter < '0') || (caracter > '9')) && (caracter != KeyEvent.VK_BACK_SPACE)) {
             evt.consume();
         }else
         {
-            
+            if ( EmpCont.Existe_Empresa(Id, Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id) )
+               {
+                   DatosEmpresa = EmpCont.getDatoEmpresa(EmpCont.Id);
+                    jtextnombre.setText(DatosEmpresa[0][1].toString());
+               }
+            //JOptionPane.showMessageDialog(this,Nombre);
         }
     }//GEN-LAST:event_jtextrucKeyTyped
 
