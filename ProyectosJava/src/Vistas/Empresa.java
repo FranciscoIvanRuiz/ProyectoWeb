@@ -17,19 +17,18 @@ import javax.swing.JOptionPane;
 public class Empresa extends javax.swing.JInternalFrame {
 
     private EmpresaControl EmpCont = new EmpresaControl();
-    
-      
-      public Integer Id = 0;
-      public String Nombre = "";
-     public  String Ruc = "" ;
-      public String Telefono = "";
-      public String Fax = "";
-     public  String Correo ="";
-     public  String Direccion = "" ;
-     public  String Web = "";
-     public  String Personas_id = "";
-     private Object[][] DatosEmpresa;
-    
+
+    public Integer Id = 0;
+    public String Nombre = "";
+    public String Ruc = "";
+    public String Telefono = "";
+    public String Fax = "";
+    public String Correo = "";
+    public String Direccion = "";
+    public String Web = "";
+    public String Personas_id = "";
+    private Object[][] DatosEmpresa;
+
     /**
      * Creates new form Empresa
      */
@@ -62,6 +61,13 @@ public class Empresa extends javax.swing.JInternalFrame {
     }
 
     public void EventoGrabar() {
+        ObtenerDatos();
+
+        if (EmpCont.Existe_Empresa(Id, Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id)) {
+            EmpCont.ActualizarEmpresa(Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id, Integer.toString(EmpCont.Id));
+        } else {
+            EmpCont.CrearEmpresa(Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id);
+        }
 
     }
 

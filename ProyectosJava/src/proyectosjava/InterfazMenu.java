@@ -264,6 +264,11 @@ public class InterfazMenu extends javax.swing.JFrame {
 
     private void jButtongrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtongrabarActionPerformed
         // TODO add your handling code here:
+         JInternalFrame selectedFrame = panel.getSelectedFrame();
+        
+        /*para cada ventana poner el evento*/
+        if(selectedFrame instanceof Empresa){Empr.EventoGrabar();}
+        /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtongrabarActionPerformed
 
     /**

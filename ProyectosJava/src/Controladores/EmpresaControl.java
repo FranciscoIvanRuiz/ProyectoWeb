@@ -55,5 +55,29 @@ public class EmpresaControl {
         String[] datos = {Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id};
         mySql.Ejecutar_Insruccion_Sql(datos, "insert into empresas(nombre ,ruc,telefono,fax,correo,direccion,web,personas_id) values(?,?,?,?,?,?,?,?);");
     }
+    
+    
+   public void ActualizarEmpresa(String Nombre, String Ruc, String Telefono, String Fax, String Correo, String Direccion, String Web, String Personas_id , String Id) {
+        String[] datos = {Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id,Id};
+        mySql.Ejecutar_Insruccion_Sql(datos, " update empresas set nombre  = ?,ruc  = ?,telefono  = ?,fax  = ?,correo  = ?,direccion  = ?,web  = ?,personas_id  = ? where id = ? ;");
+    }
+    
+    
+    public Object[][] BuscarEmpresa(String Nombre, String Ruc, String Telefono, String Fax, String Correo, String Direccion, String Web, String Personas_id, String Id) {
 
+        if (Nombre.length()>0){}
+        if (Ruc.length()>0){}
+        if (Telefono.length()>0){}
+       if (Fax.length()>0){}
+       if (Correo.length()>0){}
+       if (Direccion.length()>0){}
+       if (Web.length()>0){}
+       if (Personas_id.length()>0){}
+       if (Id.length()>0){}
+        
+        String[] columnas = {"nombre", "ruc", "telefono", "fax", "correo", "direccion", "web", "personas_id", "id"};
+        Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas where id='" + Id + "';");
+        return data;
+    }
+    
 }
