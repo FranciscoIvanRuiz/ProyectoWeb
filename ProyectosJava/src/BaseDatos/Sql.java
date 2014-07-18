@@ -135,11 +135,11 @@ public class Sql {
       /*  METODO PARA OBTENER TODOS LOS DATOS DE UNA TABLA
     *  parametros (Un array con los nombres de las columnas, el nombre de la tabla, la instruccion sql)
     */
-   public Object [][] GetTabla(String colName[], String tabla, String sql){
+   public Object [][] GetTabla(String colName[], String tabla, String sql , String Where){
       int registros = 0;
       //obtenemos la cantidad de registros existentes en la tabla
       try{
-         PreparedStatement pstm = con.getConnection().prepareStatement("SELECT count(*) as total FROM " + tabla);
+         PreparedStatement pstm = con.getConnection().prepareStatement("SELECT count(*) as total FROM " + tabla + Where);
          ResultSet res = pstm.executeQuery();
          res.next();
          registros = res.getInt("total");

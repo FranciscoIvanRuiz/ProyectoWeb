@@ -24,6 +24,7 @@ public class EmpresaControl {
     private String Direccion = "";
     private String Web = "";
     private String Personas_id = "";
+   
 
     public EmpresaControl() {
     }
@@ -47,7 +48,7 @@ public class EmpresaControl {
 
     public Object[][] getDatoEmpresa(Integer Id) {
         String[] columnas = {"nombre", "ruc", "telefono", "fax", "correo", "direccion", "web", "personas_id"};
-        Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas where id='" + Id + "';");
+        Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas where id='" + Id + "';","");
         return data;
     }
 
@@ -64,20 +65,39 @@ public class EmpresaControl {
     
     
     public Object[][] BuscarEmpresa(String Nombre, String Ruc, String Telefono, String Fax, String Correo, String Direccion, String Web, String Personas_id, String Id) {
-
-        if (Nombre.length()>0){}
-        if (Ruc.length()>0){}
-        if (Telefono.length()>0){}
-       if (Fax.length()>0){}
-       if (Correo.length()>0){}
-       if (Direccion.length()>0){}
-       if (Web.length()>0){}
-       if (Personas_id.length()>0){}
-       if (Id.length()>0){}
         
+        String Condicion= " where 1 = 1";
+        
+        if (Nombre.length() > 0) {
+            Condicion = Condicion + " and nombre like '%"+Nombre+"%'" ;
+        }
+        if (Ruc.length() > 0) {
+            Condicion = Condicion + " and ruc like '%"+Ruc+"%'" ;
+        }
+        if (Telefono.length() > 0) {
+            Condicion = Condicion + " and telefono like '%"+Telefono+"%'" ;
+        }
+        if (Fax.length() > 0) {
+            Condicion = Condicion + " and fax like '%"+Fax+"%'" ;
+        }
+        if (Correo.length() > 0) {
+            Condicion = Condicion + " and correo like '%"+Correo+"%'" ;
+        }
+        if (Direccion.length() > 0) {
+            Condicion = Condicion + " and direccion like '%"+Direccion+"%'" ;
+        }
+        if (Web.length() > 0) {
+            Condicion = Condicion + " and web like '%"+Web+"%'" ;
+        }
+        if (Personas_id.length() > 0) {
+        }
+        if (Id.length() > 0) {
+        }
+
+       
         String[] columnas = {"nombre", "ruc", "telefono", "fax", "correo", "direccion", "web", "personas_id", "id"};
-        Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas where id='" + Id + "';");
+        Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas  " + Condicion + ";",Condicion);
         return data;
     }
-    
+
 }

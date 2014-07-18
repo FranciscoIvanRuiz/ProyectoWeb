@@ -242,14 +242,28 @@ public class InterfazMenu extends javax.swing.JFrame {
 
     private void jButtonanteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonanteriorActionPerformed
         // TODO add your handling code here:
+         JInternalFrame selectedFrame = panel.getSelectedFrame();
+        
+        /*para cada ventana poner el evento*/
+        if(selectedFrame instanceof Empresa){Empr.EventoAnterior();}
+        /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonanteriorActionPerformed
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
-        // TODO add your handling code here:
+ JInternalFrame selectedFrame = panel.getSelectedFrame();
+        
+        /*para cada ventana poner el evento*/
+        if(selectedFrame instanceof Empresa){Empr.EventoSiguiente();}
+        /*fin para cada ventana poner el evento*/        // TODO add your handling code here:
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void jButtonbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonbuscarActionPerformed
         // TODO add your handling code here:
+         JInternalFrame selectedFrame = panel.getSelectedFrame();
+        
+        /*para cada ventana poner el evento*/
+        if(selectedFrame instanceof Empresa){Empr.EventoBuscar();}
+        /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonbuscarActionPerformed
 
     private void jButtonnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonnuevoActionPerformed

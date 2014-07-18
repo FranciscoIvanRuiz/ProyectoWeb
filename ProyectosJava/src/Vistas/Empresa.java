@@ -27,7 +27,12 @@ public class Empresa extends javax.swing.JInternalFrame {
     public String Direccion = "";
     public String Web = "";
     public String Personas_id = "";
-    private Object[][] DatosEmpresa;
+   public Object[][] DatosEmpresa;
+    
+     
+    public Integer TotalRegistros=0;
+    public Integer Siguiente=0;
+    public Integer Anterior=0;
 
     /**
      * Creates new form Empresa
@@ -80,15 +85,46 @@ public class Empresa extends javax.swing.JInternalFrame {
     }
 
     public void EventoSiguiente() {
+        
+        if (Siguiente>=TotalRegistros){ Siguiente=0;}
+         
+            jtextnombre.setText(DatosEmpresa[Siguiente][0].toString());
+            jtextruc.setText(DatosEmpresa[Siguiente][1].toString());
+            jtexttelefono.setText(DatosEmpresa[Siguiente][2].toString());
+            jtextfax.setText(DatosEmpresa[Siguiente][3].toString());
+            jtextcorreo.setText(DatosEmpresa[Siguiente][4].toString());
+            jtextdireccion.setText(DatosEmpresa[Siguiente][5].toString());
+            jtextweb.setText(DatosEmpresa[Siguiente][6].toString());
+            jtextpersonas_id.setText(DatosEmpresa[Siguiente][7].toString());
+            
+           Siguiente = Siguiente + 1;
+           
 
+           
+           
     }
 
     public void EventoAnterior() {
+        
+        if (Anterior<0){ Anterior=TotalRegistros - 1;}
 
+           jtextnombre.setText(DatosEmpresa[Anterior][0].toString());
+            jtextruc.setText(DatosEmpresa[Anterior][1].toString());
+            jtexttelefono.setText(DatosEmpresa[Anterior][2].toString());
+            jtextfax.setText(DatosEmpresa[Anterior][3].toString());
+            jtextcorreo.setText(DatosEmpresa[Anterior][4].toString());
+            jtextdireccion.setText(DatosEmpresa[Anterior][5].toString());
+            jtextweb.setText(DatosEmpresa[Anterior][6].toString());
+            jtextpersonas_id.setText(DatosEmpresa[Anterior][7].toString());
+            Anterior =Anterior  - 1;
     }
 
     public void EventoBuscar() {
-
+            ObtenerDatos();
+             DatosEmpresa = EmpCont.BuscarEmpresa(Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id, Integer.toString(Id));
+             TotalRegistros = DatosEmpresa.length  ;
+             System.out.println("Buscar-----" + TotalRegistros);
+             
     }
     
     /**

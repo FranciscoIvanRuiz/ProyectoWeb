@@ -56,7 +56,7 @@ public class Interfaz extends javax.swing.JFrame {
          DefaultMutableTreeNode opcion;
          
           String[] columnas_empr={"id","nombre","ruc","correo"};
-          Object[][] data_empr = mySql.GetTabla(columnas_empr, "empresas", "select * from empresas;"); 
+          Object[][] data_empr = mySql.GetTabla(columnas_empr, "empresas", "select * from empresas;",""); 
           if( data_empr.length > 0)
               {
                   for (int i = 0; i < data_empr.length; i++) {
@@ -64,7 +64,7 @@ public class Interfaz extends javax.swing.JFrame {
                         raiz.add(empresa);
                         
                         String[] columnas_modu={"id","nombre"};
-                        Object[][] data_modu = mySql.GetTabla(columnas_modu, "modulos", "select * from modulos;"); 
+                        Object[][] data_modu = mySql.GetTabla(columnas_modu, "modulos", "select * from modulos;",""); 
                         if( data_modu.length > 0)
                            {    
                                for (int j = 0; j < data_modu.length; j++) {
@@ -72,7 +72,7 @@ public class Interfaz extends javax.swing.JFrame {
                                     empresa.add(modulo);
                                     
                                     String[] columnas_subm={"id","nombre"};
-                                    Object[][] data_subm = mySql.GetTabla(columnas_subm, "submodulos", "select * from submodulos where modulos_id="+data_modu[j][0]+";"); 
+                                    Object[][] data_subm = mySql.GetTabla(columnas_subm, "submodulos", "select * from submodulos where modulos_id="+data_modu[j][0]+";",""); 
               
                                      if( data_subm.length > 0)
                                         {
@@ -81,7 +81,7 @@ public class Interfaz extends javax.swing.JFrame {
                                                 modulo.add(submodulo);
                                                 
                                                 String[] columnas_opci={"id","nombre"};
-                                                Object[][] data_opci = mySql.GetTabla(columnas_subm, "opciones", "select * from opciones where submodulo_modulos_id="+data_modu[j][0]+" and  submodulo_id="+data_subm[k][0]+";"); 
+                                                Object[][] data_opci = mySql.GetTabla(columnas_subm, "opciones", "select * from opciones where submodulo_modulos_id="+data_modu[j][0]+" and  submodulo_id="+data_subm[k][0]+";",""); 
               
                                                  if( data_opci.length > 0)
                                                     {
