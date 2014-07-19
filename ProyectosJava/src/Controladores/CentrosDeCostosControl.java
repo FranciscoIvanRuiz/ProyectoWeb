@@ -42,20 +42,20 @@ public class CentrosDeCostosControl {
     
     
      public Object[][] getDatoCentroDeCosto(Integer Id) {
-        String[] columnas = {"nombre", "codigo", "empresa_id"};
+        String[] columnas = {"nombre", "codigo", "empresas_id"};
         Object[][] data = mySql.GetTabla(columnas, "centrosdecostos", "select * from centrosdecostos where id='" + Id + "';","");
         return data;
     }
 
     public void CrearCentroDeCosto(String Nombre, String Codigo, String Empresa_id) {
         String[] datos = {Nombre, Codigo, Empresa_id};
-        mySql.Ejecutar_Insruccion_Sql(datos, "insert into centrosdecostos(nombre ,codigo,empresa_id) values(?,?,?);");
+        mySql.Ejecutar_Insruccion_Sql(datos, "insert into centrosdecostos(nombre ,codigo,empresas_id) values(?,?,?);");
     }
     
     
     public void ActualizarCentroDeCosto(String Nombre, String Codigo, String Empresa_id, String Id) {
         String[] datos = {Nombre, Codigo, Empresa_id,Id};
-        mySql.Ejecutar_Insruccion_Sql(datos, " update centrosdecostos set nombre  = ?,codigo  = ?,empresa_id  = ? where id = ? ;");
+        mySql.Ejecutar_Insruccion_Sql(datos, " update centrosdecostos set nombre  = ?,codigo  = ?,empresas_id  = ? where id = ? ;");
     }
     
     
@@ -70,14 +70,14 @@ public class CentrosDeCostosControl {
             Condicion = Condicion + " and codigo like '%"+Codigo+"%'" ;
         }
         if (Empresa_id.length() > 0) {
-            Condicion = Condicion + " and empresa_id like '%"+Empresa_id+"%'" ;
+            //Condicion = Condicion + " and empresas_id like '%"+Empresa_id+"%'" ;
         }
         
         if (Id.length() > 0) {
         }
 
        
-        String[] columnas = {"nombre", "codigo", "empresa_id",  "id"};
+        String[] columnas = {"nombre", "codigo", "empresas_id",  "id"};
         Object[][] data = mySql.GetTabla(columnas, "centrosdecostos", "select * from centrosdecostos  " + Condicion + ";",Condicion);
         return data;
     }

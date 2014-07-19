@@ -51,6 +51,13 @@ public class EmpresaControl {
         Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas where id='" + Id + "';","");
         return data;
     }
+    
+     public Object[][] getDatoEmpresa(String Id) {
+        String[] columnas = {"nombre", "ruc", "telefono", "fax", "correo", "direccion", "web", "personas_id"};
+        Object[][] data = mySql.GetTabla(columnas, "empresas", "select * from empresas where id='" + Id + "';","");
+        return data;
+    }
+
 
     public void CrearEmpresa(String Nombre, String Ruc, String Telefono, String Fax, String Correo, String Direccion, String Web, String Personas_id) {
         String[] datos = {Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id};

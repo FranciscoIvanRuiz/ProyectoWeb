@@ -25,6 +25,7 @@ public class CentrosDeCostos extends javax.swing.JInternalFrame {
     public String Empresa_id = "";
     
    public Object[][] DatosCentrosDeCostos;
+   public Object[][] DatosEmpresa;
     
      
     public Integer TotalRegistros=0;
@@ -42,8 +43,8 @@ public class CentrosDeCostos extends javax.swing.JInternalFrame {
         jtextempresa_id.removeAllItems();
         for(int i=0;i<DatosEmpresas.length;i++){
             String Item = (String)DatosEmpresas[i][8] +"-"+  (String)DatosEmpresas[i][0];
-            jtextempresa_id.addItem(Item);
-           // jtextempresa_id.setSelectedIndex((int) DatosEmpresas[i][8]);
+          
+           jtextempresa_id.addItem(Item);
         }
     }
 
@@ -94,7 +95,8 @@ public class CentrosDeCostos extends javax.swing.JInternalFrame {
          
              jtextnombre.setText(DatosCentrosDeCostos[Registros][0].toString());
             jtextcodigo.setText(DatosCentrosDeCostos[Registros][1].toString());
-            jtextempresa_id.setSelectedItem(DatosCentrosDeCostos[Registros][2].toString());
+             DatosEmpresa = EmpCont.getDatoEmpresa(DatosCentrosDeCostos[Registros][2].toString());
+            jtextempresa_id.setSelectedItem(DatosCentrosDeCostos[Registros][2].toString() +"-"+DatosEmpresa[0][0]);
             //jtextempresa_id.setText(DatosCentrosDeCostos[Registros][2].toString());
             
            Registros = Registros + 1;
@@ -111,7 +113,8 @@ public class CentrosDeCostos extends javax.swing.JInternalFrame {
 
            jtextnombre.setText(DatosCentrosDeCostos[Registros][0].toString());
             jtextcodigo.setText(DatosCentrosDeCostos[Registros][1].toString());
-            jtextempresa_id.setSelectedItem(DatosCentrosDeCostos[Registros][2].toString());
+            DatosEmpresa = EmpCont.getDatoEmpresa(DatosCentrosDeCostos[Registros][2].toString());
+            jtextempresa_id.setSelectedItem(DatosCentrosDeCostos[Registros][2].toString() +"-"+DatosEmpresa[0][0]);
             
             Registros =Registros  - 1;
             if (Registros<0 ){Registros = 0;}
@@ -120,7 +123,7 @@ public class CentrosDeCostos extends javax.swing.JInternalFrame {
     public void EventoBuscar() {
             ObtenerDatos();
              DatosCentrosDeCostos = CencCont.BuscarCentroDeCosto(Nombre, Codigo, Empresa_id, Integer.toString(Id));
-             TotalRegistros = DatosCentrosDeCostos.length  ;
+                      TotalRegistros = DatosCentrosDeCostos.length  ;
              if (TotalRegistros - 1 < 0 ){TotalRegistros=0;}
              System.out.println("Buscar-----" + TotalRegistros);
              
@@ -221,7 +224,8 @@ public class CentrosDeCostos extends javax.swing.JInternalFrame {
             
             jtextnombre.setText(DatosCentrosDeCostos[0][0].toString());
             jtextcodigo.setText(DatosCentrosDeCostos[0][1].toString());
-            jtextempresa_id.setSelectedItem(DatosCentrosDeCostos[Registros][2].toString());
+             DatosEmpresa = EmpCont.getDatoEmpresa(DatosCentrosDeCostos[0][2].toString());
+            jtextempresa_id.setSelectedItem(DatosCentrosDeCostos[0][2].toString()+"-"+DatosEmpresa[0][0]);
 
         }
     }//GEN-LAST:event_jtextcodigoFocusLost
