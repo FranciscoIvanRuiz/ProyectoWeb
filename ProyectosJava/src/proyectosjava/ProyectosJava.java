@@ -18,6 +18,7 @@ public class ProyectosJava {
     
     /* Debemos definir en esta parte todas las pantallas que vamos a utilizar */
     private Empresa Empr;
+    public Integer EmpresaSelecionada=0;
     /* Fin Debemos definir en esta parte todas las pantallas que vamos a utilizar */
      
     

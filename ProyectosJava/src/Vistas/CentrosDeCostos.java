@@ -8,6 +8,7 @@ package Vistas;
 
 import Controladores.CentrosDeCostosControl;
 import Controladores.EmpresaControl;
+import proyectosjava.VariablesGlobales;
 
 
 
@@ -103,6 +104,7 @@ public class CentrosDeCostos extends javax.swing.JInternalFrame {
             
            Registros = Registros + 1;
            if (Registros>TotalRegistros ){Registros = TotalRegistros  ;}
+           System.out.println("Siguiente" + Registros + "Total" + TotalRegistros);
            
 
            
@@ -120,12 +122,15 @@ public class CentrosDeCostos extends javax.swing.JInternalFrame {
             
             Registros =Registros  - 1;
             if (Registros<0 ){Registros = 0;}
+            
+             System.out.println("Anterior" + Registros + "Total" + TotalRegistros);
+           
     }
 
     public void EventoBuscar() {
             ObtenerDatos();
              DatosCentrosDeCostos = CencCont.BuscarCentroDeCosto(Nombre, Codigo, Empresa_id, Integer.toString(Id));
-                      TotalRegistros = DatosCentrosDeCostos.length  ;
+                      TotalRegistros = DatosCentrosDeCostos.length - 1   ;
              if (TotalRegistros - 1 < 0 ){TotalRegistros=0;}
              System.out.println("Buscar-----" + TotalRegistros);
              

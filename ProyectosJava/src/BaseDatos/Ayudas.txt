@@ -17,3 +17,7 @@ evt.consume();
 
 
 netbeans_default_options="-J-client -J-Xss2m -J-Xms32m -J-XX:PermSize=32m -J-Xmx256M -J-Dapple.laf.useScreenMenuBar=true -J-Dapple.awt.graphics.UseQuartz=true -J-Dsun.java2d.noddraw=true -J-Dsun.java2d.dpiaware=true -J-Dsun.zip.disableMemoryMapping=true"
+
+
+ System.out.println("Siguiente" + Registros + "Total" + TotalRegistros);
+           jtextcodigo

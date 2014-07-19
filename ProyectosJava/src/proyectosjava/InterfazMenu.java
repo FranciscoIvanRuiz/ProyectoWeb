@@ -11,6 +11,7 @@ import Controladores.CentrosDeCostosControl;
 import Controladores.EmpresaControl;
 import Vistas.CentrosDeCostos;
 import Vistas.Empresa;
+import Vistas.SelecionarEmpresa;
 import javax.swing.JInternalFrame;
 
 /**
@@ -25,6 +26,10 @@ public class InterfazMenu extends javax.swing.JFrame {
     
     private CentrosDeCostos Cenc;
     private CentrosDeCostosControl CencCont=  new CentrosDeCostosControl();
+    
+    private SelecionarEmpresa SelEmpr;
+    //private CentrosDeCostosControl CencCont=  new CentrosDeCostosControl();
+    
     
     
     /* Fin Debemos definir en esta parte todas las pantallas que vamos a utilizar */
@@ -237,6 +242,18 @@ public class InterfazMenu extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
+        
+        
+         if(EstaCerrado(SelEmpr)){
+            SelEmpr = new SelecionarEmpresa();
+            panel.add(SelEmpr);
+            SelEmpr.show();
+        }
+        else{
+            //JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed

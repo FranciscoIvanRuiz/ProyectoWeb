@@ -125,7 +125,7 @@ public class Empresa extends javax.swing.JInternalFrame {
     public void EventoBuscar() {
             ObtenerDatos();
              DatosEmpresa = EmpCont.BuscarEmpresa(Nombre, Ruc, Telefono, Fax, Correo, Direccion, Web, Personas_id, Integer.toString(Id));
-             TotalRegistros = DatosEmpresa.length  ;
+             TotalRegistros = DatosEmpresa.length  -1  ;
              if (TotalRegistros - 1 < 0 ){TotalRegistros=0;}
              System.out.println("Buscar-----" + TotalRegistros);
              
