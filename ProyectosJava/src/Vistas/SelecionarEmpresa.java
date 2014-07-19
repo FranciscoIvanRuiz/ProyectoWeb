@@ -9,6 +9,7 @@ package Vistas;
 import Controladores.CentrosDeCostosControl;
 import Controladores.EmpresaControl;
 import javax.swing.JOptionPane;
+import proyectosjava.InterfazMenu;
 import proyectosjava.VariablesGlobales;
 
 
@@ -100,13 +101,14 @@ public class SelecionarEmpresa extends javax.swing.JInternalFrame {
 
     private void jtextempresa_idItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jtextempresa_idItemStateChanged
         // TODO add your handling code here:
-        
+         
         String Item="";
         Item = (String)jtextempresa_id.getSelectedItem();
         //Index =  (Int)jtextempresa_id.getSelectedIndex()
        if (Item!=null){
            Empresa_id = Item.substring(0,  Item.indexOf("-"));
            
+          
            
            int respuesta = JOptionPane.showConfirmDialog(null, "Cambio de empresa", "¿Desea cambiar de empresa?", JOptionPane.YES_NO_CANCEL_OPTION);
            switch (respuesta) {
