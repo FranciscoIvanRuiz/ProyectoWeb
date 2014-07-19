@@ -7,7 +7,9 @@
 package proyectosjava;
 
 import BaseDatos.Sql;
+import Controladores.CentrosDeCostosControl;
 import Controladores.EmpresaControl;
+import Vistas.CentrosDeCostos;
 import Vistas.Empresa;
 import javax.swing.JInternalFrame;
 
@@ -20,6 +22,11 @@ public class InterfazMenu extends javax.swing.JFrame {
     /* Debemos definir en esta parte todas las pantallas que vamos a utilizar */
     private Empresa Empr;
     private EmpresaControl EmprCont=  new EmpresaControl();
+    
+    private CentrosDeCostos Cenc;
+    private CentrosDeCostosControl CencCont=  new CentrosDeCostosControl();
+    
+    
     /* Fin Debemos definir en esta parte todas las pantallas que vamos a utilizar */
     
     private Sql mySql = new Sql();
@@ -76,6 +83,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
 
@@ -183,6 +191,15 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Diagram.png"))); // NOI18N
+        jMenuItem4.setText("Crear Centros De Costos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Personas");
@@ -246,6 +263,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         
         /*para cada ventana poner el evento*/
         if(selectedFrame instanceof Empresa){Empr.EventoAnterior();}
+        if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoAnterior();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonanteriorActionPerformed
 
@@ -254,6 +272,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         
         /*para cada ventana poner el evento*/
         if(selectedFrame instanceof Empresa){Empr.EventoSiguiente();}
+        if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoSiguiente();}
         /*fin para cada ventana poner el evento*/        // TODO add your handling code here:
     }//GEN-LAST:event_siguienteActionPerformed
 
@@ -263,6 +282,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         
         /*para cada ventana poner el evento*/
         if(selectedFrame instanceof Empresa){Empr.EventoBuscar();}
+        if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoBuscar();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonbuscarActionPerformed
 
@@ -272,6 +292,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         
         /*para cada ventana poner el evento*/
         if(selectedFrame instanceof Empresa){Empr.EventoNuevo();}
+        if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoNuevo();}
         /*fin para cada ventana poner el evento*/
         
     }//GEN-LAST:event_jButtonnuevoActionPerformed
@@ -282,8 +303,22 @@ public class InterfazMenu extends javax.swing.JFrame {
         
         /*para cada ventana poner el evento*/
         if(selectedFrame instanceof Empresa){Empr.EventoGrabar();}
+        if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoGrabar();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtongrabarActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        
+        if(EstaCerrado(Cenc)){
+            Cenc = new CentrosDeCostos();
+            panel.add(Cenc);
+            Cenc.show();
+        }
+        else{
+            //JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,6 +371,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JDesktopPane panel;
     private javax.swing.JButton siguiente;
