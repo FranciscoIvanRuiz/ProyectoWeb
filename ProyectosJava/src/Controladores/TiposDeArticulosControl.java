@@ -36,25 +36,25 @@ public class TiposDeArticulosControl {
     }
 
     public Object[][] getDatoTiposDeArticulos(Integer Id) {
-        String[] columnas = {"codigo", "nombre", "tipo", "empresa_id"};
+        String[] columnas = {"codigo", "nombre", "tipo", "empresas_id"};
         Object[][] data = mySql.GetTabla(columnas, "tiposdearticulos", "select * from tiposdearticulos where id='" + Id + "';", "");
         return data;
     }
 
     public Object[][] getDatoTiposDeArticulos(String Id) {
-        String[] columnas = {"codigo", "nombre", "tipo", "empresa_id"};
+        String[] columnas = {"codigo", "nombre", "tipo", "empresas_id"};
         Object[][] data = mySql.GetTabla(columnas, "tiposdearticulos", "select * from tiposdearticulos where id='" + Id + "';", "");
         return data;
     }
 
     public void CrearTiposDeArticulos(String Codigo, String Nombre, String Tipo, String Empresa_id) {
         String[] datos = {Codigo, Nombre, Tipo, Empresa_id};
-        mySql.Ejecutar_Insruccion_Sql(datos, "insert into tiposdearticulos(codigo ,nombre,tipo,empresa_id) values(?,?,?,?);");
+        mySql.Ejecutar_Insruccion_Sql(datos, "insert into tiposdearticulos(codigo ,nombre,tipo,empresas_id) values(?,?,?,?);");
     }
 
     public void ActualizarTiposDeArticulos(String Codigo, String Nombre, String Tipo, String Empresa_id, String Id) {
         String[] datos = {Codigo, Nombre, Tipo, Empresa_id, Id};
-        mySql.Ejecutar_Insruccion_Sql(datos, " update tiposdearticulos set codigo  = ?,nombre  = ?,tipo  = ?,empresa_id  = ? where id = ? ;");
+        mySql.Ejecutar_Insruccion_Sql(datos, " update tiposdearticulos set codigo  = ?,nombre  = ?,tipo  = ?,empresas_id  = ? where id = ? ;");
     }
 
     public Object[][] BuscarTiposDeArticulos(String Codigo, String Nombre, String Tipo, String Empresa_id, String Id) {
@@ -68,13 +68,13 @@ public class TiposDeArticulosControl {
             Condicion = Condicion + " and nombre like '%" + Nombre + "%'";
         }
         if (Empresa_id.length() > 0) {
-            Condicion = Condicion + " and empresa_id like '" + Empresa_id + "'";
+            Condicion = Condicion + " and empresas_id like '" + Empresa_id + "'";
         }
 
         if (Id.length() > 0) {
         }
 
-        String[] columnas = {"codigo", "nombre", "tipo", "empresa_id", "id"};
+        String[] columnas = {"codigo", "nombre", "tipo", "empresas_id", "id"};
         Object[][] data = mySql.GetTabla(columnas, "tiposdearticulos", "select * from tiposdearticulos  " + Condicion + ";", Condicion);
         return data;
     }
