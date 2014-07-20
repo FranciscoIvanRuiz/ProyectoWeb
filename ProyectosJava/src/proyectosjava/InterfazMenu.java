@@ -9,6 +9,7 @@ package proyectosjava;
 import BaseDatos.Sql;
 import Controladores.CentrosDeCostosControl;
 import Controladores.EmpresaControl;
+import Vistas.Articulo;
 import Vistas.CentrosDeCostos;
 import Vistas.Empresa;
 import Vistas.SelecionarEmpresa;
@@ -31,6 +32,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private SelecionarEmpresa SelEmpr;
     
     private TiposDeArticulos Tipa;
+    private Articulo Arti;
     
     //private CentrosDeCostosControl CencCont=  new CentrosDeCostosControl();
     
@@ -240,6 +242,11 @@ public class InterfazMenu extends javax.swing.JFrame {
 
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Servidores.png"))); // NOI18N
         jMenuItem6.setText("Crear Articulos");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem6);
 
         jMenuBar1.add(jMenu5);
@@ -306,6 +313,8 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof Empresa){Empr.EventoAnterior();}
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoAnterior();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoAnterior();}
+        if(selectedFrame instanceof Articulo){Arti.EventoAnterior();}
+        
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonanteriorActionPerformed
 
@@ -316,6 +325,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof Empresa){Empr.EventoSiguiente();}
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoSiguiente();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoSiguiente();}
+        if(selectedFrame instanceof Articulo){Arti.EventoSiguiente();}
         /*fin para cada ventana poner el evento*/        // TODO add your handling code here:
     }//GEN-LAST:event_siguienteActionPerformed
 
@@ -327,6 +337,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof Empresa){Empr.EventoBuscar();}
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoBuscar();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoBuscar();}
+        if(selectedFrame instanceof Articulo){Arti.EventoBuscar();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonbuscarActionPerformed
 
@@ -338,6 +349,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof Empresa){Empr.EventoNuevo();}
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoNuevo();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoNuevo();}
+        if(selectedFrame instanceof Articulo){Arti.EventoNuevo();}
         /*fin para cada ventana poner el evento*/
         
     }//GEN-LAST:event_jButtonnuevoActionPerformed
@@ -350,6 +362,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof Empresa){Empr.EventoGrabar();}
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoGrabar();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoGrabar();}
+        if(selectedFrame instanceof Articulo){Arti.EventoGrabar();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtongrabarActionPerformed
 
@@ -378,6 +391,18 @@ public class InterfazMenu extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+         if(EstaCerrado(Arti)){
+            Arti = new Articulo();
+            panel.add(Arti);
+            Arti.show();
+        }
+        else{
+            //JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     /**
      * @param args the command line arguments
