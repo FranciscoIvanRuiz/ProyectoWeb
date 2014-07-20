@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `SistemaWeb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `SistemaWeb`;
--- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.38, for debian-linux-gnu (i686)
 --
 -- Host: 127.0.0.1    Database: SistemaWeb
 -- ------------------------------------------------------
--- Server version	5.5.37-0ubuntu0.14.04.1
+-- Server version	5.5.38-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +16,67 @@ USE `SistemaWeb`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `articulos`
+--
+
+DROP TABLE IF EXISTS `articulos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `articulos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(45) DEFAULT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `tiposdearticulos_id` int(11) NOT NULL,
+  `empresas_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
+  KEY `fk_articulos_tiposdearticulos1_idx` (`tiposdearticulos_id`),
+  KEY `fk_articulos_empresas1_idx` (`empresas_id`),
+  CONSTRAINT `fk_articulos_empresas1` FOREIGN KEY (`empresas_id`) REFERENCES `empresas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_articulos_tiposdearticulos1` FOREIGN KEY (`tiposdearticulos_id`) REFERENCES `tiposdearticulos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `articulos`
+--
+
+LOCK TABLES `articulos` WRITE;
+/*!40000 ALTER TABLE `articulos` DISABLE KEYS */;
+INSERT INTO `articulos` VALUES (1,'001','CONSULTORIAS',1,5),(2,'002','MOVILIZACION',2,5);
+/*!40000 ALTER TABLE `articulos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `centrosdecostos`
+--
+
+DROP TABLE IF EXISTS `centrosdecostos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `centrosdecostos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(45) DEFAULT NULL,
+  `empresas_id` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
+  KEY `fk_centrosdecostos_empresas1_idx` (`empresas_id`),
+  CONSTRAINT `fk_centrosdecostos_empresas1` FOREIGN KEY (`empresas_id`) REFERENCES `empresas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `centrosdecostos`
+--
+
+LOCK TABLES `centrosdecostos` WRITE;
+/*!40000 ALTER TABLE `centrosdecostos` DISABLE KEYS */;
+INSERT INTO `centrosdecostos` VALUES (1,'001',2,'PROYECTO STRATUS'),(2,'002',5,'PROYECTO MINI'),(3,'003',4,'PROYECTO CONTABILIDADES');
+/*!40000 ALTER TABLE `centrosdecostos` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `empresas`
@@ -34,11 +95,11 @@ CREATE TABLE `empresas` (
   `direccion` varchar(45) DEFAULT NULL,
   `web` varchar(45) DEFAULT NULL,
   `personas_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`personas_id`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `ruc_UNIQUE` (`ruc`),
   KEY `fk_empresas_personas_idx` (`personas_id`),
   CONSTRAINT `fk_empresas_personas` FOREIGN KEY (`personas_id`) REFERENCES `personas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +108,7 @@ CREATE TABLE `empresas` (
 
 LOCK TABLES `empresas` WRITE;
 /*!40000 ALTER TABLE `empresas` DISABLE KEYS */;
-INSERT INTO `empresas` VALUES (2,'SISTEMAS INFORMATICOS','1714688213001','022866316','022866316','francisco.ivan.ruiz@gmail.com','VALLE DE LOS CHILLOS','WWW',1),(4,'CONTABILIDADES','1714688212001','0984495050','0984495050','francisco.ivan.ruiz@icloud.com','CAPELO','WWW',1);
+INSERT INTO `empresas` VALUES (2,'SISTEMAS INFORMATICOS','1714688213001','022866316','022866316','francisco.ivan.ruiz@gmail.com','VALLE DE LOS CHILLOS','www.sistemas.com',1),(4,'CONTABILIDADES RUIZ','1714688212001','0984495050','0984495050','francisco.ivan.ruiz@icloud.com','CAPELO','WWW',1),(5,'MINI RUIZ','1714688213003','2866360','2866360','mini.com','mini.com','mini.com',1);
 /*!40000 ALTER TABLE `empresas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,31 +196,33 @@ INSERT INTO `personas` VALUES (1,'1714688213','FRANCISCO','IVAN','RUIZ','SIMBANA
 UNLOCK TABLES;
 
 --
--- Table structure for table `submodulos`
+-- Table structure for table `tiposdearticulos`
 --
 
-DROP TABLE IF EXISTS `submodulos`;
+DROP TABLE IF EXISTS `tiposdearticulos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `submodulos` (
+CREATE TABLE `tiposdearticulos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(45) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
-  `modulos_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`modulos_id`),
-  UNIQUE KEY `nombre_UNIQUE` (`nombre`),
-  KEY `fk_submenu_modulos1_idx` (`modulos_id`),
-  CONSTRAINT `fk_submenu_modulos1` FOREIGN KEY (`modulos_id`) REFERENCES `modulos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `tipo` varchar(2) DEFAULT NULL,
+  `empresas_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
+  KEY `fk_tiposdearticulos_empresas1_idx` (`empresas_id`),
+  CONSTRAINT `fk_tiposdearticulos_empresas1` FOREIGN KEY (`empresas_id`) REFERENCES `empresas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `submodulos`
+-- Dumping data for table `tiposdearticulos`
 --
 
-LOCK TABLES `submodulos` WRITE;
-/*!40000 ALTER TABLE `submodulos` DISABLE KEYS */;
-INSERT INTO `submodulos` VALUES (2,'Comun',1);
-/*!40000 ALTER TABLE `submodulos` ENABLE KEYS */;
+LOCK TABLES `tiposdearticulos` WRITE;
+/*!40000 ALTER TABLE `tiposdearticulos` DISABLE KEYS */;
+INSERT INTO `tiposdearticulos` VALUES (1,'001','COMPUTADORAS','01',5),(2,'002','TAXIS FRANCISCO RUIZ','02',5),(3,'003','CONTABILIDADES','02',4),(4,'004','TRASNPORTES','03',4);
+/*!40000 ALTER TABLE `tiposdearticulos` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -174,7 +237,7 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(10) DEFAULT NULL,
   `clave` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,4 +259,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-13 18:14:12
+-- Dump completed on 2014-07-20  0:48:32

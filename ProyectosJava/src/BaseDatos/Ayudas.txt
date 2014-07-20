@@ -20,4 +20,6 @@ netbeans_default_options="-J-client -J-Xss2m -J-Xms32m -J-XX:PermSize=32m -J-Xmx
 
 
  System.out.println("Siguiente" + Registros + "Total" + TotalRegistros);
-           jtextcodigo
+          
+
+ jtextcodigo
