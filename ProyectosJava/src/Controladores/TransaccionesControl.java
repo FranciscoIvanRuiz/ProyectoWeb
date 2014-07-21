@@ -73,6 +73,7 @@ public class TransaccionesControl {
         }
 
         if (Id.length() > 0) {
+            
         }
 
         String[] columnas = {"codigo", "nombre", "tipo",  "empresas_id"};
