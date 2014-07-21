@@ -79,6 +79,65 @@ INSERT INTO `centrosdecostos` VALUES (1,'001',2,'PROYECTO STRATUS'),(2,'002',5,'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `contadores`
+--
+
+DROP TABLE IF EXISTS `contadores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contadores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(45) DEFAULT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `digitos` int(11) DEFAULT NULL,
+  `desde` varchar(45) DEFAULT NULL,
+  `hasta` varchar(45) DEFAULT NULL,
+  `empresas_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
+  KEY `fk_contadores_empresas1_idx` (`empresas_id`),
+  CONSTRAINT `fk_contadores_empresas1` FOREIGN KEY (`empresas_id`) REFERENCES `empresas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contadores`
+--
+
+LOCK TABLES `contadores` WRITE;
+/*!40000 ALTER TABLE `contadores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contadores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dcontadores`
+--
+
+DROP TABLE IF EXISTS `dcontadores`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dcontadores` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(45) DEFAULT NULL,
+  `utilizado` varchar(1) DEFAULT NULL,
+  `contadores_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
+  KEY `fk_dcontadores_contadores1_idx` (`contadores_id`),
+  CONSTRAINT `fk_dcontadores_contadores1` FOREIGN KEY (`contadores_id`) REFERENCES `contadores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dcontadores`
+--
+
+LOCK TABLES `dcontadores` WRITE;
+/*!40000 ALTER TABLE `dcontadores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `dcontadores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `empresas`
 --
 
@@ -167,6 +226,33 @@ INSERT INTO `opciones` VALUES (3,'Empresa',2,1),(4,'Personas',2,1);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `parametros`
+--
+
+DROP TABLE IF EXISTS `parametros`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `parametros` (
+  `ventas` int(11) DEFAULT NULL,
+  `compras` int(11) DEFAULT NULL,
+  `nventas` int(11) DEFAULT NULL,
+  `ncompras` int(11) DEFAULT NULL,
+  `empresas_id` int(11) NOT NULL,
+  PRIMARY KEY (`empresas_id`),
+  CONSTRAINT `fk_parametros_empresas1` FOREIGN KEY (`empresas_id`) REFERENCES `empresas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `parametros`
+--
+
+LOCK TABLES `parametros` WRITE;
+/*!40000 ALTER TABLE `parametros` DISABLE KEYS */;
+/*!40000 ALTER TABLE `parametros` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `personas`
 --
 
@@ -226,6 +312,35 @@ INSERT INTO `tiposdearticulos` VALUES (1,'001','COMPUTADORAS','01',5),(2,'002','
 UNLOCK TABLES;
 
 --
+-- Table structure for table `transacciones`
+--
+
+DROP TABLE IF EXISTS `transacciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transacciones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(45) DEFAULT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `empresas_id` int(11) NOT NULL,
+  `tipo` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
+  KEY `fk_transacciones_empresas1_idx` (`empresas_id`),
+  CONSTRAINT `fk_transacciones_empresas1` FOREIGN KEY (`empresas_id`) REFERENCES `empresas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transacciones`
+--
+
+LOCK TABLES `transacciones` WRITE;
+/*!40000 ALTER TABLE `transacciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transacciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuarios`
 --
 
@@ -259,4 +374,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-20  0:48:32
+-- Dump completed on 2014-07-20 19:16:30
