@@ -11,6 +11,7 @@ import Controladores.CentrosDeCostosControl;
 import Controladores.EmpresaControl;
 import Vistas.Articulo;
 import Vistas.CentrosDeCostos;
+import Vistas.Contador;
 import Vistas.Empresa;
 import Vistas.SelecionarEmpresa;
 import Vistas.TiposDeArticulos;
@@ -33,6 +34,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     
     private TiposDeArticulos Tipa;
     private Articulo Arti;
+      private Contador Cont;
     
     //private CentrosDeCostosControl CencCont=  new CentrosDeCostosControl();
     
@@ -91,6 +93,8 @@ public class InterfazMenu extends javax.swing.JFrame {
         siguiente = new javax.swing.JButton();
         jButtonbuscar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -184,6 +188,19 @@ public class InterfazMenu extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(jButtonbuscar);
+
+        jMenu6.setText("Parametros");
+
+        jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Color layers.png"))); // NOI18N
+        jMenuItem7.setText("Crear Contador");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem7);
+
+        jMenuBar1.add(jMenu6);
 
         jMenu1.setText("Empresa ");
 
@@ -404,6 +421,18 @@ public class InterfazMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+           if(EstaCerrado(Cont)){
+            Cont = new Contador();
+            panel.add(Cont);
+            Cont.show();
+        }
+        else{
+            //JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -451,6 +480,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
@@ -459,6 +489,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JDesktopPane panel;
     private javax.swing.JButton siguiente;
