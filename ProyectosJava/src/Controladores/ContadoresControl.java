@@ -14,6 +14,8 @@ import BaseDatos.Sql;
 public class ContadoresControl {
 
     private Sql mySql = new Sql();
+    private DContadoresControl DContCont = new DContadoresControl();
+    
     public Integer Id = 0;
     private String Codigo = "";
     private String Nombre = "";
@@ -54,6 +56,18 @@ public class ContadoresControl {
     public void CrearContador(String Codigo, String Nombre, Integer Digitos, String Desde, String Hasta, String Empresa_id) {
         String[] datos = {Codigo, Nombre, Digitos.toString(), Desde, Hasta, Empresa_id};
         mySql.Ejecutar_Insruccion_Sql(datos, "insert into contadores(codigo ,nombre,digitos,desde,hasta,empresas_id) values(?,?,?,?,?,?);");
+    
+    }
+    
+    public void CrearDetalleContador(String Codigo, String Nombre, Integer Digitos, String Desde, String Hasta, String Empresa_id , String Id){
+         String Contador ="";
+        
+        for (int i = Integer.parseInt(Desde); i <= Integer.parseInt(Hasta); i++) {
+            Contador=String.format("%0"+Digitos+"d", i);
+            
+            System.out.println(Contador);
+             DContCont.CrearDContador(Contador, "N", Id);
+         }
     }
 
     public void ActualizarContador(String Codigo, String Nombre, Integer Digitos, String Desde, String Hasta, String Empresa_id, String Id) {

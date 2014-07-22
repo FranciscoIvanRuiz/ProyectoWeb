@@ -34,7 +34,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     
     private TiposDeArticulos Tipa;
     private Articulo Arti;
-      private Contador Cont;
+   private Contador Cont;
     
     //private CentrosDeCostosControl CencCont=  new CentrosDeCostosControl();
     
@@ -331,7 +331,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoAnterior();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoAnterior();}
         if(selectedFrame instanceof Articulo){Arti.EventoAnterior();}
-        
+        if(selectedFrame instanceof Contador){Cont.EventoAnterior();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonanteriorActionPerformed
 
@@ -343,6 +343,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoSiguiente();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoSiguiente();}
         if(selectedFrame instanceof Articulo){Arti.EventoSiguiente();}
+        if(selectedFrame instanceof Contador){Cont.EventoSiguiente();}
         /*fin para cada ventana poner el evento*/        // TODO add your handling code here:
     }//GEN-LAST:event_siguienteActionPerformed
 
@@ -355,6 +356,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoBuscar();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoBuscar();}
         if(selectedFrame instanceof Articulo){Arti.EventoBuscar();}
+        if(selectedFrame instanceof Contador){Cont.EventoBuscar();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonbuscarActionPerformed
 
@@ -367,6 +369,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoNuevo();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoNuevo();}
         if(selectedFrame instanceof Articulo){Arti.EventoNuevo();}
+        if(selectedFrame instanceof Contador){Cont.EventoNuevo();}
         /*fin para cada ventana poner el evento*/
         
     }//GEN-LAST:event_jButtonnuevoActionPerformed
@@ -380,6 +383,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof CentrosDeCostos){Cenc.EventoGrabar();}
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoGrabar();}
         if(selectedFrame instanceof Articulo){Arti.EventoGrabar();}
+        if(selectedFrame instanceof Contador){Cont.EventoGrabar();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtongrabarActionPerformed
 

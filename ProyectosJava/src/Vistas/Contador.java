@@ -7,7 +7,9 @@
 package Vistas;
 
 import Controladores.ContadoresControl;
+import Controladores.DContadoresControl;
 import Controladores.EmpresaControl;
+import javax.swing.table.DefaultTableModel;
 import proyectosjava.VariablesGlobales;
 
 /**
@@ -17,7 +19,7 @@ import proyectosjava.VariablesGlobales;
 public class Contador extends javax.swing.JInternalFrame {
 private EmpresaControl EmpCont = new EmpresaControl();
 private ContadoresControl ContCont = new ContadoresControl();
-
+private DContadoresControl DContCont = new DContadoresControl();
     public Integer Id = 0;
     public String Codigo = "";
     public String Nombre = "";
@@ -27,7 +29,7 @@ private ContadoresControl ContCont = new ContadoresControl();
     public String Empresa_id = "";
     public Object[][] DatosEmpresa;
     public Object[][] DatosContadores;
-    
+    public Object[][] DatosDContadores;
 
     public Integer TotalRegistros = 0;
     public Integer Siguiente = 0;
@@ -52,6 +54,15 @@ private ContadoresControl ContCont = new ContadoresControl();
         jtextempresa_id.setSelectedItem(VariablesGlobales.EmpresaSelecionada.toString() + "-" + DatosEmpresa[0][0]);
     }
     
+     public void ObtenerDatosDetalle(String Id) {
+          String[] columNames = {"Contador", "Utilizado S/N", "Contadores Id"};
+       
+        DatosDContadores = DContCont.getDatoDContador(Id);
+        // se colocan los datos en la tabla
+        DefaultTableModel datos = new DefaultTableModel(DatosDContadores,columNames);
+        jTable1.setModel(datos);
+     
+     }
     
       public void ObtenerDatos() {
 
@@ -63,7 +74,8 @@ private ContadoresControl ContCont = new ContadoresControl();
         Digitos = jtextdigitos.getText();
         Desde = jtextdesde.getText();
         Hasta = jtexthasta.getText();
-
+        
+        
         Item = (String) jtextempresa_id.getSelectedItem();
         //Index =  (Int)jtextempresa_id.getSelectedIndex()
         if (Item != null) {
@@ -91,9 +103,16 @@ private ContadoresControl ContCont = new ContadoresControl();
 
         if (ContCont.Existe_Contador(Id, Codigo, Nombre, Integer.parseInt(Digitos), Desde, Hasta, Empresa_id)){
             ContCont.ActualizarContador(Codigo, Nombre, Integer.parseInt(Digitos), Desde, Hasta, Empresa_id,Integer.toString(ContCont.Id));
+            
+            ContCont.CrearDetalleContador(Codigo, Nombre, Integer.parseInt(Digitos), Desde, Hasta, Empresa_id, Integer.toString(ContCont.Id));
+            
                     
         } else {
             ContCont.CrearContador(Codigo, Nombre, Integer.parseInt(Digitos), Desde, Hasta, Empresa_id);
+            if (ContCont.Existe_Contador(Id, Codigo, Nombre, Integer.parseInt(Digitos), Desde, Hasta, Empresa_id)){
+             ContCont.CrearDetalleContador(Codigo, Nombre, Integer.parseInt(Digitos), Desde, Hasta, Empresa_id, Integer.toString(ContCont.Id));
+           
+            }
         }
     }
       
@@ -181,6 +200,12 @@ private ContadoresControl ContCont = new ContadoresControl();
         jtextempresa_id = new javax.swing.JComboBox();
         jtextdesde = new javax.swing.JFormattedTextField();
         jtexthasta = new javax.swing.JFormattedTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Contadores");
@@ -197,6 +222,14 @@ private ContadoresControl ContCont = new ContadoresControl();
 
         jLabel6.setText("Empresa:");
 
+        jtextcodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtextcodigoFocusLost(evt);
+            }
+        });
+
+        jtextdigitos.setText("0");
+
         jtextempresa_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jtextempresa_id.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -204,10 +237,39 @@ private ContadoresControl ContCont = new ContadoresControl();
             }
         });
 
+        jtextdesde.setText("1");
+
+        jtexthasta.setText("999999");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jLabel7.setText("jLabel7");
+        jTabbedPane2.addTab("tab1", jLabel7);
+
+        jButton1.setText("jButton1");
+        jTabbedPane2.addTab("tab2", jButton1);
+
+        jTabbedPane1.addTab("tab1", jTabbedPane2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,36 +288,45 @@ private ContadoresControl ContCont = new ContadoresControl();
                         .addComponent(jtextdesde, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jtextdigitos, javax.swing.GroupLayout.Alignment.LEADING))
                     .addComponent(jtextempresa_id, 0, 215, Short.MAX_VALUE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jtextcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jtextnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jtextdigitos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jtextdesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jtexthasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jtextempresa_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jtextcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jtextnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jtextdigitos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jtextdesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jtexthasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jtextempresa_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -268,19 +339,54 @@ private ContadoresControl ContCont = new ContadoresControl();
         //Index =  (Int)jtextempresa_id.getSelectedIndex()
        if (Item!=null){
            Empresa_id = Item.substring(0,  Item.indexOf("-"));
-           System.out.println(Item.substring(0,  Item.indexOf("-")));
+          /// System.out.println(Item.substring(0,  Item.indexOf("-")));
        }
         
     }//GEN-LAST:event_jtextempresa_idItemStateChanged
 
+    private void jtextcodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtextcodigoFocusLost
+        // TODO add your handling code here:
+        
+         ObtenerDatos();
+        
+       
+         
+
+        if (ContCont.Existe_Contador(Id, Codigo, Nombre, Integer.parseInt(Digitos) , Desde, Hasta, Empresa_id)) {
+            
+            DatosContadores = ContCont.getDatoContador(ContCont.Id);
+            
+           
+        jtextcodigo.setText(DatosContadores[0][0].toString());
+        jtextnombre.setText(DatosContadores[0][1].toString());
+         jtextdigitos.setText(DatosContadores[0][2].toString());
+          jtextdesde.setText(DatosContadores[0][3].toString());
+           jtexthasta.setText(DatosContadores[0][4].toString());
+        
+        DatosEmpresa = EmpCont.getDatoEmpresa(DatosContadores[0][5].toString());
+        jtextempresa_id.setSelectedItem(DatosContadores[0][5].toString() + "-" + DatosEmpresa[0][0]);
+            
+        ObtenerDatosDetalle(ContCont.Id.toString());
+        
+        }
+        
+        
+    }//GEN-LAST:event_jtextcodigoFocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jtextcodigo;
     private javax.swing.JFormattedTextField jtextdesde;
     private javax.swing.JFormattedTextField jtextdigitos;

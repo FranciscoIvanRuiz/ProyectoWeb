@@ -37,13 +37,13 @@ public class DContadoresControl {
 
     public Object[][] getDatoDContador(Integer Id) {
         String[] columnas = {"codigo", "utilizado", "contadores_id"};
-        Object[][] data = mySql.GetTabla(columnas, "dcontadores", "select * from dcontadores where id='" + Id + "';", "");
+        Object[][] data = mySql.GetTabla(columnas, "dcontadores", "select * from dcontadores where contadores_id='" + Id + "';", "");
         return data;
     }
 
     public Object[][] getDatoDContador(String Id) {
         String[] columnas = {"codigo", "utilizado", "contadores_id"};
-        Object[][] data = mySql.GetTabla(columnas, "dcontadores", "select * from dcontadores where id='" + Id + "';", "");
+        Object[][] data = mySql.GetTabla(columnas, "dcontadores", "select * from dcontadores where contadores_id='" + Id + "';", "");
         return data;
     }
 
