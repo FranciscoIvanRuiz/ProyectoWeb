@@ -187,22 +187,31 @@ public class Articulo extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Articulos");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText("Codigo:");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setText("Nombre:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel3.setText("Tipo de Articulo:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel4.setText("Empresa:");
 
+        jtextcodigo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextcodigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtextcodigoFocusLost(evt);
             }
         });
 
+        jtextnombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+
+        jtexttiposdearticulos_id.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtexttiposdearticulos_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jtextempresa_id.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextempresa_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jtextempresa_id.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -225,7 +234,7 @@ public class Articulo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jtextcodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 144, Short.MAX_VALUE))
+                        .addGap(0, 146, Short.MAX_VALUE))
                     .addComponent(jtextnombre)
                     .addComponent(jtexttiposdearticulos_id, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jtextempresa_id, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

@@ -115,6 +115,7 @@ public class InterfazMenu extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
+        jButtonnuevo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButtonnuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/New file.png"))); // NOI18N
         jButtonnuevo.setText("Nuevo");
         jButtonnuevo.setFocusable(false);
@@ -127,6 +128,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonnuevo);
 
+        jButtongrabar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButtongrabar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Save all.png"))); // NOI18N
         jButtongrabar.setText("Grabar");
         jButtongrabar.setFocusable(false);
@@ -139,6 +141,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtongrabar);
 
+        jButtoneliminar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButtoneliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Delete.png"))); // NOI18N
         jButtoneliminar.setText("Eliminar");
         jButtoneliminar.setFocusable(false);
@@ -146,6 +149,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         jButtoneliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButtoneliminar);
 
+        jButtonimprimir.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButtonimprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Print.png"))); // NOI18N
         jButtonimprimir.setText("Imprimir");
         jButtonimprimir.setFocusable(false);
@@ -153,6 +157,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         jButtonimprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButtonimprimir);
 
+        jButtonanterior.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButtonanterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Back.png"))); // NOI18N
         jButtonanterior.setText("Anterior");
         jButtonanterior.setFocusable(false);
@@ -165,6 +170,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonanterior);
 
+        siguiente.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Forward.png"))); // NOI18N
         siguiente.setText("Siguiente");
         siguiente.setFocusable(false);
@@ -177,6 +183,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jToolBar1.add(siguiente);
 
+        jButtonbuscar.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButtonbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Find.png"))); // NOI18N
         jButtonbuscar.setText("Buscar");
         jButtonbuscar.setFocusable(false);
@@ -189,8 +196,12 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonbuscar);
 
-        jMenu6.setText("Parametros");
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
 
+        jMenu6.setText("Parametros");
+        jMenu6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+
+        jMenuItem7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jMenuItem7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Color layers.png"))); // NOI18N
         jMenuItem7.setText("Crear Contador");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +214,9 @@ public class InterfazMenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         jMenu1.setText("Empresa ");
+        jMenu1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
+        jMenuItem1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Designer.png"))); // NOI18N
         jMenuItem1.setText("Selecionar Empresa");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +226,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Home.png"))); // NOI18N
         jMenuItem2.setText("Crear Empresa");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -222,6 +236,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Diagram.png"))); // NOI18N
         jMenuItem4.setText("Crear Centros De Costos");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -234,7 +249,9 @@ public class InterfazMenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Persona");
+        jMenu2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
+        jMenuItem3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Work area.png"))); // NOI18N
         jMenuItem3.setText("Crear Personas");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +264,9 @@ public class InterfazMenu extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu5.setText("Inventario");
+        jMenu5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
+        jMenuItem5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Pantone.png"))); // NOI18N
         jMenuItem5.setText("Crear Tipos De Articulos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +276,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem5);
 
+        jMenuItem6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Servidores.png"))); // NOI18N
         jMenuItem6.setText("Crear Articulos");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +302,7 @@ public class InterfazMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE))
+                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE))
         );
 
         pack();

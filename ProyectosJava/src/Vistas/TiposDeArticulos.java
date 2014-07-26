@@ -195,22 +195,31 @@ public class TiposDeArticulos extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Tipos De Articulos");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText("Codigo:");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setText("Nombre:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel3.setText("Tipo:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel4.setText("Empresa:");
 
+        jtextcodigo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextcodigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtextcodigoFocusLost(evt);
             }
         });
 
+        jtextnombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+
+        jtexttipo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtexttipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-Bienes", "02-Servicios", "03-Transporte" }));
 
+        jtextempresa_id.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextempresa_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

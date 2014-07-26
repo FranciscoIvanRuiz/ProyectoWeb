@@ -66,8 +66,10 @@ public class SelecionarEmpresa extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Selecionar Empresa");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText("Empresa:");
 
+        jtextempresa_id.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextempresa_id.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jtextempresa_id.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -83,7 +85,7 @@ public class SelecionarEmpresa extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jtextempresa_id, 0, 273, Short.MAX_VALUE)
+                .addComponent(jtextempresa_id, 0, 276, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -93,7 +95,7 @@ public class SelecionarEmpresa extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtextempresa_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();

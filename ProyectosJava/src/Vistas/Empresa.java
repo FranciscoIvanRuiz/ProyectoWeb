@@ -160,22 +160,31 @@ public class Empresa extends javax.swing.JInternalFrame {
         setClosable(true);
         setTitle("Empresas");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText("Nombre:");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setText("R.U.C:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel3.setText("Telefono:");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel4.setText("Fax:");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel5.setText("Correo:");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel6.setText("Direccion:");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel7.setText("Web:");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel8.setText("Responsable:");
 
+        jtextruc.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextruc.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtextrucFocusLost(evt);
@@ -187,11 +196,24 @@ public class Empresa extends javax.swing.JInternalFrame {
             }
         });
 
+        jtextnombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextnombreActionPerformed(evt);
             }
         });
+
+        jtexttelefono.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+
+        jtextfax.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+
+        jtextcorreo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+
+        jtextdireccion.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+
+        jtextweb.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+
+        jtextpersonas_id.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,7 +238,7 @@ public class Empresa extends javax.swing.JInternalFrame {
                     .addComponent(jtextcorreo)
                     .addComponent(jtextdireccion)
                     .addComponent(jtextweb)
-                    .addComponent(jtextpersonas_id, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                    .addComponent(jtextpersonas_id, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                     .addComponent(jtexttelefono))
                 .addContainerGap())
         );
