@@ -162,8 +162,8 @@ CREATE TABLE `dmovimientos` (
   PRIMARY KEY (`id`),
   KEY `fk_dmovimiento_movimiento1` (`movimientos_id`),
   KEY `fk_dmovimientos_articulos1` (`articulos_id`),
-  CONSTRAINT `fk_dmovimiento_movimiento1` FOREIGN KEY (`movimientos_id`) REFERENCES `movimientos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_dmovimientos_articulos1` FOREIGN KEY (`articulos_id`) REFERENCES `articulos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_dmovimientos_articulos1` FOREIGN KEY (`articulos_id`) REFERENCES `articulos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dmovimiento_movimiento1` FOREIGN KEY (`movimientos_id`) REFERENCES `movimientos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -248,6 +248,11 @@ CREATE TABLE `movimientos` (
   `tipo` varchar(2) DEFAULT NULL,
   `proveedoresclientes_id` int(11) NOT NULL,
   `transacciones_id` int(11) NOT NULL,
+  `serie1` varchar(45) DEFAULT NULL,
+  `serie2` varchar(45) DEFAULT NULL,
+  `factura` varchar(45) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
+  `secuencial` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_movimiento_empresas1` (`empresas_id`),
   KEY `fk_movimientos_proveedoresclientes1` (`proveedoresclientes_id`),
@@ -508,4 +513,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-07-23 22:05:35
+-- Dump completed on 2014-07-27 19:27:48
