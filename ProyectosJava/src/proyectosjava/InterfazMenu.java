@@ -15,6 +15,7 @@ import Vistas.Contador;
 import Vistas.Empresa;
 import Vistas.SelecionarEmpresa;
 import Vistas.TiposDeArticulos;
+import Vistas.TiposDeRetenciones;
 import javax.swing.JInternalFrame;
 
 /**
@@ -35,6 +36,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private TiposDeArticulos Tipa;
     private Articulo Arti;
    private Contador Cont;
+   private TiposDeRetenciones Reten;
     
     //private CentrosDeCostosControl CencCont=  new CentrosDeCostosControl();
     
@@ -95,6 +97,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -210,6 +213,16 @@ public class InterfazMenu extends javax.swing.JFrame {
             }
         });
         jMenu6.add(jMenuItem7);
+
+        jMenuItem8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jMenuItem8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosSistema/Check boxes.png"))); // NOI18N
+        jMenuItem8.setText("Crear Tipos de Retenciones");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem8);
 
         jMenuBar1.add(jMenu6);
 
@@ -352,6 +365,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoAnterior();}
         if(selectedFrame instanceof Articulo){Arti.EventoAnterior();}
         if(selectedFrame instanceof Contador){Cont.EventoAnterior();}
+        if(selectedFrame instanceof TiposDeRetenciones){Reten.EventoAnterior();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonanteriorActionPerformed
 
@@ -364,6 +378,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoSiguiente();}
         if(selectedFrame instanceof Articulo){Arti.EventoSiguiente();}
         if(selectedFrame instanceof Contador){Cont.EventoSiguiente();}
+        if(selectedFrame instanceof TiposDeRetenciones){Reten.EventoSiguiente();}
         /*fin para cada ventana poner el evento*/        // TODO add your handling code here:
     }//GEN-LAST:event_siguienteActionPerformed
 
@@ -377,6 +392,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoBuscar();}
         if(selectedFrame instanceof Articulo){Arti.EventoBuscar();}
         if(selectedFrame instanceof Contador){Cont.EventoBuscar();}
+        if(selectedFrame instanceof TiposDeRetenciones){Reten.EventoBuscar();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtonbuscarActionPerformed
 
@@ -390,6 +406,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoNuevo();}
         if(selectedFrame instanceof Articulo){Arti.EventoNuevo();}
         if(selectedFrame instanceof Contador){Cont.EventoNuevo();}
+        if(selectedFrame instanceof TiposDeRetenciones){Reten.EventoNuevo();}
         /*fin para cada ventana poner el evento*/
         
     }//GEN-LAST:event_jButtonnuevoActionPerformed
@@ -404,6 +421,7 @@ public class InterfazMenu extends javax.swing.JFrame {
         if(selectedFrame instanceof TiposDeArticulos){Tipa.EventoGrabar();}
         if(selectedFrame instanceof Articulo){Arti.EventoGrabar();}
         if(selectedFrame instanceof Contador){Cont.EventoGrabar();}
+        if(selectedFrame instanceof TiposDeRetenciones){Reten.EventoGrabar();}
         /*fin para cada ventana poner el evento*/
     }//GEN-LAST:event_jButtongrabarActionPerformed
 
@@ -456,6 +474,20 @@ public class InterfazMenu extends javax.swing.JFrame {
             //JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        if(EstaCerrado(Reten)){
+            Reten = new TiposDeRetenciones();
+            panel.add(Reten);
+            Reten.show();
+        }
+        else{
+            //JOptionPane.showMessageDialog(this,"Error: La ventana ya esta abierta...");
+        }
+        
+        
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,6 +546,7 @@ public class InterfazMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JDesktopPane panel;
     private javax.swing.JButton siguiente;

@@ -29,7 +29,8 @@ netbeans_default_options="-J-client -J-Xss2m -J-Xms32m -J-XX:PermSize=32m -J-Xmx
 
 
 empresas_id=?,tipo=?,proveedoresclientes_id=?,transacciones_id=?,serie1=?,serie2=?,factura=?,fecha=?,secuencial=?
-
+//////////////////////////////////
+Double.parseDouble(jtextporcentaje.getText())
 
 
 
