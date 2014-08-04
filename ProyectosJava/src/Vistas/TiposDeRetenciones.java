@@ -43,6 +43,8 @@ public class TiposDeRetenciones extends javax.swing.JInternalFrame {
        Nombre = jtextnombre.getText();
        Codigo = jtextcodigo.getText() ;
        Porcentaje= Double.parseDouble(jtextporcentaje.getText()) ;
+       
+        System.out.println(Porcentaje);
     }
     
     
@@ -132,26 +134,40 @@ public class TiposDeRetenciones extends javax.swing.JInternalFrame {
         jtextnombre = new javax.swing.JTextField();
         jtextporcentaje = new javax.swing.JFormattedTextField();
 
+        setClosable(true);
         setTitle("Tipos de Retenciones");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText("Codigo:");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel2.setText("Nombre:");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel3.setText("Porcentaje:");
 
+        jtextcodigo.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextcodigo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jtextcodigoFocusLost(evt);
             }
         });
+        jtextcodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextcodigoActionPerformed(evt);
+            }
+        });
 
+        jtextnombre.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextnombreActionPerformed(evt);
             }
         });
 
+        jtextporcentaje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        jtextporcentaje.setText("0.00");
+        jtextporcentaje.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jtextporcentaje.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtextporcentajeActionPerformed(evt);
@@ -215,6 +231,10 @@ public class TiposDeRetenciones extends javax.swing.JInternalFrame {
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextcodigoFocusLost
+
+    private void jtextcodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextcodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextcodigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

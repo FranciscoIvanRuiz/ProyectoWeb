@@ -11,6 +11,29 @@ package Vistas;
  * @author USER
  */
 public class ProveedoresClientes extends javax.swing.JInternalFrame {
+    
+   
+    
+ public Integer     Id  = 0;
+ public String Codigo = "";
+ public String Ruc = "";
+ public String Nombres = "";
+ public String Direccion = "";
+ public String Telefono1 = "";
+ public String Telefono2 = "";
+ public String Telefono3 = "";
+ public String Correo = "";
+ public String Representante= ""; 
+ public String Empresas_id= "";
+ public String Rentabien = "";
+ public String Rentaservicio = "";
+ public String Rentatransporte = "";
+ public String Ivabien = "";
+ public String Ivaservicios = "";
+ public String Ivatransporte = "";
+ public String Tipo= "";
+    
+    
 
     /**
      * Creates new form ProveedoresClientes

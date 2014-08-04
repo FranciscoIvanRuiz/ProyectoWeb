@@ -49,7 +49,7 @@ public class TiposDeRetencionesControl {
 
     public void CrearTiposDeRetenciones(String Codigo, String Nombre, Double Porcentaje) {
         String[] datos = {Codigo, Nombre,  String.valueOf(Porcentaje)};
-        mySql.Ejecutar_Insruccion_Sql(datos, "insert into tiposderetencion(codigo ,nombre,porcentaje) values(?,?,?);");
+        mySql.Ejecutar_Insruccion_Sql(datos, "insert into tiposderetenciones(codigo ,nombre,porcentaje) values(?,?,?);");
     }
 
     public void ActualizarTiposDeRetencion(String Codigo, String Nombre, Double Porcentaje, String Id) {
